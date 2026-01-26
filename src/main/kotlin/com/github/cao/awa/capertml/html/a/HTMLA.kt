@@ -6,6 +6,7 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.HTMLAMedia
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.HTMLAMediaOperator
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.HTMLAMediaValueType
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.value.HTMLAMediaValue
+import org.github.cao.awa.com.github.cao.awa.capertml.html.a.ping.HTMLAPingList
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.ref.HTMLAReferrerPolicy
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.rel.HTMLARelType
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.target.HTMLATarget
@@ -20,6 +21,7 @@ class HTMLA: HTMLElement() {
     private var target: HTMLATarget? = null
     private var media: HTMLAMedia? = null
     private var type: String? = null
+    private var ping: HTMLAPingList? = null
 
     fun download(download: String) {
         this.download = download
@@ -57,6 +59,12 @@ class HTMLA: HTMLElement() {
         this.type = type
     }
 
+    fun ping(body: HTMLAPingList.() -> Unit) {
+        this.ping = HTMLAPingList().also {
+            body(it)
+        }
+    }
+
     override fun toString(pretty: Boolean, ident: String): String {
         val builder = StringBuilder()
         if (pretty) {
@@ -87,8 +95,14 @@ class HTMLA: HTMLElement() {
         if (this.type != null) {
             builder.append(" type=\"${this.type}\"")
         }
+        if (this.ping != null && !this.ping!!.isEmpty()) {
+            builder.append(" ping=\"${this.ping}\"")
+        }
         if (getHtmlClass().isNotEmpty()) {
             builder.append(" class=\"${getHtmlClass()}\"")
+        }
+        if (getId().isNotEmpty()) {
+            builder.append(" id=\"${getId()}\"")
         }
         builder.append(">")
 

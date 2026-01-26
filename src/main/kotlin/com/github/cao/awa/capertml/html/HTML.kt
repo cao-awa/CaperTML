@@ -2,10 +2,12 @@ package org.github.cao.awa.com.github.cao.awa.capertml.html
 
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.HTMLA
 import org.github.cao.awa.com.github.cao.awa.capertml.html.div.HTMLDiv
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.HTMLHead
 import java.util.LinkedList
 
 class HTML {
     private val elements: LinkedList<HTMLElement> = LinkedList()
+    private var head: HTMLHead = HTMLHead()
 
     fun a(body: HTMLA.() -> Unit) {
         a("", body)
@@ -32,6 +34,8 @@ class HTML {
         if (pretty) {
             builder.append("\n")
         }
+        builder.append(this.head.toString(pretty, ident))
+        builder.append("\n")
         builder.append("<html>")
         if (pretty) {
             builder.append("\n")

@@ -1,31 +1,40 @@
-import org.github.cao.awa.com.github.cao.awa.capertml.div
 import org.github.cao.awa.com.github.cao.awa.capertml.html
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.HTMLADevice
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.HTMLAMediaOperator
-import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.HTMLAMediaValueType
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.orientation
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.value.orientation.HTMLAMediaOrientations
-import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.width
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.target.HTMLATarget
+import java.io.File
 
 fun main() {
-    println(html {
+    val html = html {
         div {
+            title("This is a title")
+            draggable()
             a {
-
+                href("https://example.org")
+                hrefLang("zh")
+                text("awa")
+                target(HTMLATarget.PARENT)
+                ping {
+                    +"https://www.google.com"
+                    +"https://github.com"
+                }
+                media(
+                    HTMLADevice.ALL,
+                    HTMLAMediaOperator.AND,
+                    orientation(HTMLAMediaOrientations.LANDSCAPE)
+                )
+                hClass("type")
             }
         }
-        a {
-            href("https://example.org")
-            hrefLang("zh")
-            text("awa")
-            target(HTMLATarget.PARENT)
-            media(
-                HTMLADevice.ALL,
-                HTMLAMediaOperator.AND,
-                orientation(HTMLAMediaOrientations.LANDSCAPE)
-            )
-            htmlClass("type")
-        }
-    }.toString(true, ""))
+
+    }
+
+    File("test.html").bufferedWriter(Charsets.UTF_8).use {
+        it.write(html.toString(pretty = true, ident = ""))
+        it.flush()
+        it.close()
+    }
+    println(html.toString(true, ""))
 }
