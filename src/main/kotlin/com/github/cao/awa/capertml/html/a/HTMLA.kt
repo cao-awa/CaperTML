@@ -6,37 +6,74 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.HTMLAMedia
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.HTMLAMediaOperator
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.HTMLAMediaValueType
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.value.HTMLAMediaValue
+import org.github.cao.awa.com.github.cao.awa.capertml.html.a.ref.HTMLAReferrerPolicy
+import org.github.cao.awa.com.github.cao.awa.capertml.html.a.rel.HTMLARelType
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.target.HTMLATarget
 
-class HTMLA: HTMLElement {
-    var download: String = ""
-    var href: String = ""
-    var text: String = ""
-    var target: HTMLATarget? = null
-    var media: HTMLAMedia? = null
+class HTMLA: HTMLElement() {
+    private var download: String = ""
+    private var href: String = ""
+    private var hrefLang: String = ""
+    private var referrerPolicy: HTMLAReferrerPolicy? = null
+    private var rel: HTMLARelType? = null
+    private var text: String = ""
+    private var target: HTMLATarget? = null
+    private var media: HTMLAMedia? = null
+    private var type: String? = null
 
-    fun href(href: String): HTMLA {
+    fun download(download: String) {
+        this.download = download
+    }
+
+    fun href(href: String) {
         this.href = href
-        return this
     }
 
-    fun text(text: String): HTMLA {
+    fun hrefLang(hrefLang: String) {
+        this.hrefLang = hrefLang
+    }
+
+    fun referrerPolicy(policy: HTMLAReferrerPolicy) {
+        this.referrerPolicy = policy
+    }
+
+    fun rel(type: HTMLARelType) {
+        this.rel = type
+    }
+
+    fun text(text: String) {
         this.text = text
-        return this
     }
 
-    fun media(device: HTMLADevice, operator: HTMLAMediaOperator, value: HTMLAMediaValue): HTMLA {
+    fun target(target: HTMLATarget) {
+        this.target = target
+    }
+
+    fun media(device: HTMLADevice, operator: HTMLAMediaOperator, value: HTMLAMediaValue) {
         this.media = HTMLAMedia(device, operator, value)
-        return this
+    }
+
+    fun type(type: String) {
+        this.type = type
     }
 
     override fun toString(pretty: Boolean, ident: String): String {
         val builder = StringBuilder()
+        if (pretty) {
+            builder.append(ident)
+        }
+        builder.append("<a")
         if (this.href.isNotEmpty()) {
-            if (pretty) {
-                builder.append(ident)
-            }
-            builder.append("<a href=\"${this.href}\"")
+            builder.append(" href=\"${this.href}\"")
+        }
+        if (this.hrefLang.isNotEmpty()) {
+            builder.append(" hreflang=\"${this.hrefLang}\"")
+        }
+        if (this.referrerPolicy != null) {
+            builder.append(" referrer-policy=\"${this.referrerPolicy!!.literal}\"")
+        }
+        if (this.rel != null) {
+            builder.append(" rel=\"${this.rel!!.literal}\"")
         }
         if (this.target != null) {
             builder.append(" target=\"${this.target!!.literal}\"")
@@ -45,21 +82,25 @@ class HTMLA: HTMLElement {
             builder.append(" download=\"${this.download}\"")
         }
         if (this.media != null) {
-            builder.append(" media=\"${this.media!!.toString(pretty, ident)}\"")
+            builder.append(" media=\"${this.media}\"")
+        }
+        if (this.type != null) {
+            builder.append(" type=\"${this.type}\"")
+        }
+        if (getHtmlClass().isNotEmpty()) {
+            builder.append(" class=\"${getHtmlClass()}\"")
         }
         builder.append(">")
 
+        if (pretty) {
+            builder.append("\n")
+            builder.append("$ident    ")
+        }
         if (this.text.isNotEmpty()) {
-            if (pretty) {
-                builder.append("\n")
-                builder.append("$ident    ")
-            }
             builder.append(this.text)
-            if (pretty) {
-                builder.append("\n")
-            }
         }
         if (pretty) {
+            builder.append("\n")
             builder.append(ident)
         }
         builder.append("</a>")

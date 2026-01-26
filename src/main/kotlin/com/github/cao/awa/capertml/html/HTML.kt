@@ -1,18 +1,26 @@
 package org.github.cao.awa.com.github.cao.awa.capertml.html
 
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.HTMLA
+import org.github.cao.awa.com.github.cao.awa.capertml.html.div.HTMLDiv
 import java.util.LinkedList
 
 class HTML {
     private val elements: LinkedList<HTMLElement> = LinkedList()
 
-    fun a(body: HTMLA.() -> Unit): HTMLA {
-        return a("", body)
+    fun a(body: HTMLA.() -> Unit) {
+        a("", body)
     }
 
-    fun a(href: String, body: HTMLA.() -> Unit): HTMLA {
-        return HTMLA().also {
+    fun a(href: String, body: HTMLA.() -> Unit) {
+        HTMLA().also {
             it.href(href)
+            body(it)
+            this.elements.add(it)
+        }
+    }
+
+    fun div(body: HTMLDiv.() -> Unit) {
+        HTMLDiv().also {
             body(it)
             this.elements.add(it)
         }

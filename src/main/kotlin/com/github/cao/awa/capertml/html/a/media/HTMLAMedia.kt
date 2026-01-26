@@ -7,8 +7,8 @@ class HTMLAMedia(
     val device: HTMLADevice,
     val operator: HTMLAMediaOperator,
     val value: HTMLAMediaValue
-): HTMLElement {
-    override fun toString(pretty: Boolean, ident: String): String {
+) {
+    override fun toString(): String {
         val builder = StringBuilder()
         builder.append(this.device.literal)
         builder.append(" ")

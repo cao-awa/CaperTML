@@ -2,6 +2,8 @@
   <dictionary name="project">
     <words>
       <w>htmla</w>
+      <w>noopener</w>
+      <w>noreferrer</w>
     </words>
   </dictionary>
 </component>

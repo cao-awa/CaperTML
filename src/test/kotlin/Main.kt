@@ -1,3 +1,4 @@
+import org.github.cao.awa.com.github.cao.awa.capertml.div
 import org.github.cao.awa.com.github.cao.awa.capertml.html
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.HTMLADevice
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.HTMLAMediaOperator
@@ -9,15 +10,22 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.a.target.HTMLATarget
 
 fun main() {
     println(html {
+        div {
+            a {
+
+            }
+        }
         a {
-            this.href = "https://example.org"
-            this.text = "awa"
-            this.target = HTMLATarget.PARENT
+            href("https://example.org")
+            hrefLang("zh")
+            text("awa")
+            target(HTMLATarget.PARENT)
             media(
                 HTMLADevice.ALL,
                 HTMLAMediaOperator.AND,
                 orientation(HTMLAMediaOrientations.LANDSCAPE)
             )
+            htmlClass("type")
         }
     }.toString(true, ""))
 }
