@@ -71,7 +71,9 @@ class HTMLA: HTMLElement() {
             builder.append(ident)
         }
         builder.append("<a")
-        builder.append(" lang=\"${getLang()}\"")
+        if (getLang().isNotEmpty()) {
+            builder.append(" lang=\"${getLang()}\"")
+        }
         if (this.href.isNotEmpty()) {
             builder.append(" href=\"${this.href}\"")
         }

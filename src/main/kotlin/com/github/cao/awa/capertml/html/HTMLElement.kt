@@ -3,7 +3,7 @@ package org.github.cao.awa.com.github.cao.awa.capertml.html
 abstract class HTMLElement {
     private var hClass: String = ""
     private var id: String = ""
-    private var lang: String = "en"
+    private var lang: String = ""
     private var titleAttr: String = ""
 
     abstract fun toString(pretty: Boolean, ident: String): String

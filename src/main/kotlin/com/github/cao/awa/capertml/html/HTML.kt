@@ -24,13 +24,13 @@ class HTML : HTMLElement() {
         if (pretty) {
             builder.append("\n")
         }
-        builder.append(this.head.toString(pretty, "$ident    "))
         builder.append("<html")
         builder.append(" lang=\"${getLang()}\"")
         builder.append(">")
         if (pretty) {
             builder.append("\n")
         }
+        builder.append(this.head.toString(pretty, "$ident    "))
         builder.append(this.body.toString(pretty, "$ident    "))
         builder.append("</html>")
         return builder.toString()

@@ -12,14 +12,18 @@ class HTMLHead: HTMLElement() {
 
     override fun toString(pretty: Boolean, ident: String): String {
         val builder = StringBuilder()
+        if (pretty) {
+            builder.append(ident)
+        }
         builder.append("<head")
         builder.append(">")
         if (pretty) {
             builder.append("\n")
         }
-        builder.append(this.pageTitle.toString(pretty, ident))
+        builder.append(this.pageTitle.toString(pretty, "$ident    "))
         if (pretty) {
             builder.append("\n")
+            builder.append(ident)
         }
         builder.append("</head>")
         if (pretty) {
