@@ -4,9 +4,14 @@ CaperTML is a DSL-style strong type html template generator for kotlin.
 
 ![](https://count.getloli.com/get/@capertml?theme=rule34)
 
+# Do notice
+CaperTML are not a assembly as will tool, it enforces a subset of HTML content rules at compile time.
+
+It's making invalid HTML content cannot be produce.
+
 ## Samples
 
-Execute the code.
+Execute the code:
 
 ```kotlin
 fun main() {
@@ -24,10 +29,16 @@ fun main() {
                 title("This is a title")
                 draggable()
                 a {
+                    +"awa"
+                    // Custom tag attr.
+                    custom("my-tag", "awa")
+                    // Href.
                     href("https://example.org")
+                    // Href lang.
                     hrefLang("zh")
-                    text("awa")
+                    // Target.
                     target(HTMLATarget.PARENT)
+                    // Ping list.
                     ping {
                         +"https://www.google.com"
                         +"https://github.com"
@@ -38,6 +49,7 @@ fun main() {
                         HTMLAMediaOperator.AND,
                         orientation(HTMLAMediaOrientations.LANDSCAPE)
                     )
+                    // Element classes.
                     classes("type", "test")
                 }
                 a {
@@ -63,7 +75,7 @@ You will get these output:
     </head>
     <body>
         <div title="This is a title" draggable="true">
-            <a href="https://example.org" hreflang="zh" target="_parent" media="all and (orientation:landscape)" ping="https://www.google.com https://github.com" class="type test">
+            <a href="https://example.org" hreflang="zh" target="_parent" media="all and (orientation:landscape)" ping="https://www.google.com https://github.com" class="type test" my-tag="awa">
                 awa
             </a>
             <a href="https://www.awa.com" media="all and (orientation:landscape)">

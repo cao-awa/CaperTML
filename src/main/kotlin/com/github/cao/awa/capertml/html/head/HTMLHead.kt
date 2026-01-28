@@ -6,8 +6,8 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.head.title.HTMLTitle
 class HTMLHead: HTMLElement() {
     private var pageTitle: HTMLTitle = HTMLTitle()
 
-    fun pageTitle(body: HTMLTitle.() -> Unit) {
-        body(this.pageTitle)
+    fun pageTitle(title: HTMLTitle.() -> Unit) {
+        title(this.pageTitle)
     }
 
     override fun toString(pretty: Boolean, ident: String): String {

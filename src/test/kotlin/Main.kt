@@ -23,10 +23,16 @@ fun main() {
                 title("This is a title")
                 draggable()
                 a {
+                    +"awa"
+                    // Custom tag attr.
+                    custom("my-tag", "awa")
+                    // Href.
                     href("https://example.org")
+                    // Href lang.
                     hrefLang("zh")
-                    text("awa")
+                    // Target.
                     target(HTMLATarget.PARENT)
+                    // Ping list.
                     ping {
                         +"https://www.google.com"
                         +"https://github.com"
@@ -37,6 +43,7 @@ fun main() {
                         HTMLAMediaOperator.AND,
                         orientation(HTMLAMediaOrientations.LANDSCAPE)
                     )
+                    // Element classes.
                     classes("type", "test")
                 }
                 a {

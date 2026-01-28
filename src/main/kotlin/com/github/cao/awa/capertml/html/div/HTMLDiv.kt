@@ -52,9 +52,9 @@ class HTMLDiv: HTMLElement() {
         this.spellcheck = true
     }
 
-    fun a(body: HTMLA.() -> Unit) {
+    fun a(a: HTMLA.() -> Unit) {
         HTMLA().also {
-            body(it)
+            a(it)
             this.elements.add(it)
         }
     }

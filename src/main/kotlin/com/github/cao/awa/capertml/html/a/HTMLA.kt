@@ -24,46 +24,84 @@ class HTMLA: HTMLElement() {
     private var ping: HTMLAPingList? = null
 
     fun download(download: String) {
+        if (this.download.isNotEmpty()) {
+            error("Download is already set")
+        }
         this.download = download
     }
 
     fun href(href: String) {
+        if (this.href.isNotEmpty()) {
+            error("Href is already set")
+        }
         this.href = href
     }
 
     fun hrefLang(hrefLang: String) {
+        if (this.hrefLang.isNotEmpty()) {
+            error("Href lang is already set")
+        }
         this.hrefLang = hrefLang
     }
 
     fun referrerPolicy(policy: HTMLAReferrerPolicy) {
+        if (this.referrerPolicy != null) {
+            error("Referrer policy already set")
+        }
         this.referrerPolicy = policy
     }
 
     fun rel(type: HTMLARelType) {
+        if (this.rel != null) {
+            error("Rel is already set")
+        }
         this.rel = type
     }
 
     fun text(text: String) {
-        this.text = text
+        setText(text)
+    }
+
+    operator fun String.unaryPlus() {
+        setText(this)
+    }
+
+    private fun setText(text: String) {
+        if (this.text.isNotEmpty()) {
+            error("Text is already set")
+        }
+            this.text = text
     }
 
     fun target(target: HTMLATarget) {
+        if (this.target != null) {
+            error("Target is already set")
+        }
         this.target = target
     }
 
     fun media(media: HTMLAMedia) {
+        if (this.media != null) {
+            error("Media is already set")
+        }
         this.media = media
     }
 
     fun media(device: HTMLADevice, operator: HTMLAMediaOperator, value: HTMLAMediaValue) {
-        this.media = HTMLAMedia(device, operator, value)
+        media(HTMLAMedia(device, operator, value))
     }
 
     fun type(type: String) {
+        if (this.type != null) {
+            error("Type is already set")
+        }
         this.type = type
     }
 
     fun ping(body: HTMLAPingList.() -> Unit) {
+        if (this.ping != null) {
+            error("Ping list is already set")
+        }
         this.ping = HTMLAPingList().also {
             body(it)
         }
@@ -116,6 +154,9 @@ class HTMLA: HTMLElement() {
         }
         if (getId().isNotEmpty()) {
             builder.append(" id=\"${getId()}\"")
+        }
+        for ((key, value) in getCustomAttr()) {
+            builder.append(" $key=\"$value\"")
         }
         builder.append(">")
 
