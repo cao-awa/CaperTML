@@ -5,7 +5,7 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.div.HTMLDiv
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.HTMLHead
 import java.util.LinkedList
 
-class HTML {
+class HTML: HTMLElement() {
     private val elements: LinkedList<HTMLElement> = LinkedList()
     private var head: HTMLHead = HTMLHead()
 
@@ -28,7 +28,7 @@ class HTML {
         }
     }
 
-    fun toString(pretty: Boolean, ident: String): String {
+    override fun toString(pretty: Boolean, ident: String): String {
         val builder = StringBuilder()
         builder.append("<!doctype html>")
         if (pretty) {
@@ -36,7 +36,9 @@ class HTML {
         }
         builder.append(this.head.toString(pretty, ident))
         builder.append("\n")
-        builder.append("<html>")
+        builder.append("<html")
+        builder.append(" lang=\"${getLang()}\"")
+        builder.append(">")
         if (pretty) {
             builder.append("\n")
         }

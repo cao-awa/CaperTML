@@ -6,15 +6,26 @@ Execute the code.
 ```kotlin
 fun main() {
     val html = html {
-        a {
-            this.href = "https://example.org"
-            this.text = "awa"
-            this.target = HTMLATarget.PARENT
-            media(
-                HTMLADevice.ALL,
-                HTMLAMediaOperator.AND,
-                orientation(HTMLAMediaOrientations.LANDSCAPE)
-            )
+        lang("en")
+        div {
+            title("This is a title")
+            draggable()
+            a {
+                href("https://example.org")
+                hrefLang("zh")
+                text("awa")
+                target(HTMLATarget.PARENT)
+                ping {
+                    +"https://www.google.com"
+                    +"https://github.com"
+                }
+                media(
+                    HTMLADevice.ALL,
+                    HTMLAMediaOperator.AND,
+                    orientation(HTMLAMediaOrientations.LANDSCAPE)
+                )
+                hClass("type")
+            }
         }
     }
 
@@ -24,9 +35,12 @@ fun main() {
 You will get these output:
 ```html
 <!doctype html>
-<html>
-    <a href="https://example.org" target="_parent" media="all and (orientation:landscape)">
+<head></head>
+<html lang="en">
+<div title="This is a title" draggable="true">
+    <a href="https://example.org" hreflang="zh" target="_parent" media="all and (orientation:landscape)" ping="https://www.google.com https://github.com" class="type">
         awa
     </a>
+</div>
 </html>
 ```

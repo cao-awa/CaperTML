@@ -81,6 +81,7 @@ class HTMLDiv: HTMLElement() {
             builder.append("<div></div>")
         } else {
             builder.append("<div")
+            builder.append(" lang=\"${getLang()}\"")
             if (this.title.isNotEmpty()) {
                 builder.append(" title=\"${this.title}\"")
             }

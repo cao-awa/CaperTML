@@ -8,6 +8,7 @@ import java.io.File
 
 fun main() {
     val html = html {
+        lang("en")
         div {
             title("This is a title")
             draggable()
@@ -28,13 +29,13 @@ fun main() {
                 hClass("type")
             }
         }
-
     }
+
+    println(html.toString(true, ""))
 
     File("test.html").bufferedWriter(Charsets.UTF_8).use {
         it.write(html.toString(pretty = true, ident = ""))
         it.flush()
         it.close()
     }
-    println(html.toString(true, ""))
 }
