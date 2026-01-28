@@ -1,6 +1,6 @@
 # CaperTML
 
-CaperTML is a DSL-style html template generator for kotlin.
+CaperTML is a DSL-style strong type html template generator for kotlin.
 
 ![](https://count.getloli.com/get/@capertml?theme=rule34)
 
