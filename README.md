@@ -18,8 +18,12 @@ fun main() {
     val html = html {
         lang("en")
         head {
-            // This invoke is global attr in HTML, but will not be appending to generated HTML.
-            title("INVALID CASE")
+            meta {
+                charset(Charsets.UTF_8)
+                content(VIEWPORT, viewport {
+                    width(DEVICE_WIDTH)
+                })
+            }
             pageTitle {
                 +"TestPage"
             }

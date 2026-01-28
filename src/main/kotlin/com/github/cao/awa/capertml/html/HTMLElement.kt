@@ -21,7 +21,7 @@ abstract class HTMLElement {
         this.id = id
     }
 
-    fun title(title: String) {
+    open fun title(title: String) {
         this.titleAttr = title
     }
 
