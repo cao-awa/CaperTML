@@ -2,57 +2,21 @@ package org.github.cao.awa.com.github.cao.awa.capertml.html.div
 
 import org.github.cao.awa.com.github.cao.awa.capertml.html.HTMLElement
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.HTMLA
+import org.github.cao.awa.com.github.cao.awa.capertml.html.direction.HTMLDirection
 import org.github.cao.awa.com.github.cao.awa.capertml.html.p.HTMLP
+import org.github.cao.awa.com.github.cao.awa.capertml.html.span.HTMLSpan
 import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLTextable
 import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLTextableContainer
 import java.util.LinkedList
 
 class HTMLDiv: HTMLTextableContainer() {
     private val elements: LinkedList<HTMLElement> = LinkedList()
-    private var hidden: Boolean = false
-    private var role: String = ""
-    private var ariaLabel: String = ""
-    private var ariaHidden: Boolean = false
-    private var ariaExpanded: Boolean = false
-    private var contentEditable: Boolean = false
-    private var draggable: Boolean = false
-    private var tabindex: Int = 0
-    private var spellcheck: Boolean = false
 
-    fun hidden() {
-        this.hidden = true
-    }
-
-    fun role(role: String) {
-        this.role = role
-    }
-
-    fun ariaLabel(label: String) {
-        this.ariaLabel = label
-    }
-
-    fun ariaHidden(hidden: Boolean) {
-        this.ariaHidden = hidden
-    }
-
-    fun ariaExpanded(expanded: Boolean) {
-        this.ariaExpanded = expanded
-    }
-
-    fun contentEditable(editable: Boolean) {
-        this.contentEditable = editable
-    }
-
-    fun draggable() {
-        this.draggable = true
-    }
-
-    fun tabindex(tabindex: Int) {
-        this.tabindex = tabindex
-    }
-
-    fun spellcheck() {
-        this.spellcheck = true
+    fun span(span: HTMLSpan.() -> Unit) {
+        HTMLSpan().also {
+            span(it)
+            this.elements.add(it)
+        }
     }
 
     override fun addTextable(textable: HTMLTextable) {
@@ -68,36 +32,7 @@ class HTMLDiv: HTMLTextableContainer() {
             builder.append("<div></div>")
         } else {
             builder.append("<div")
-            if (getLang().isNotEmpty()) {
-                builder.append(" lang=\"${getLang()}\"")
-            }
-            if (getTitle().isNotEmpty()) {
-                builder.append(" title=\"${getTitle()}\"")
-            }
-            if (this.ariaLabel.isNotEmpty()) {
-                builder.append(" aria-label=\"${this.ariaLabel}\"")
-            }
-            if (this.ariaHidden) {
-                builder.append(" aria-hidden=\"true\"")
-            }
-            if (this.ariaExpanded) {
-                builder.append(" aria-expanded=\"true\"")
-            }
-            if (this.contentEditable) {
-                builder.append(" contenteditable=\"${this.contentEditable}\"")
-            }
-            if (this.draggable) {
-                builder.append(" draggable=\"${this.draggable}\"")
-            }
-            if (this.tabindex > 0) {
-                builder.append(" tabindex=\"${this.tabindex}\"")
-            }
-            if (this.spellcheck) {
-                builder.append(" spellcheck=\"${this.spellcheck}\"")
-            }
-            if (this.hidden) {
-                builder.append(" hidden")
-            }
+            appendGlobal(builder)
             builder.append(">")
             if (pretty) {
                 builder.append("\n")

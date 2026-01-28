@@ -35,13 +35,15 @@ fun main() {
         }
         body {
             div {
-                title("This is a title")
                 draggable()
+                title("This is a title")
                 h1 {
                     +"Section title"
                 }
-                p {
-                    +"This is a p text"
+                span {
+                    p {
+                        +"This is a p text"
+                    }
                 }
                 a {
                     +"awa"
