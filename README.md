@@ -47,15 +47,15 @@ You will get these output:
 
 ```
 <!doctype html>
-<head>
-    <title>TestPage</title>
-</head>
 <html lang="en">
+    <head>
+        <title>TestPage</title>
+    </head>
     <body>
-        <div lang="en" title="This is a title" draggable="true">
-          <a lang="en" href="https://example.org" hreflang="zh" target="_parent" media="all and (orientation:landscape)" ping="https://www.google.com https://github.com" class="type">
-              awa
-          </a>
+        <div title="This is a title" draggable="true">
+            <a href="https://example.org" hreflang="zh" target="_parent" media="all and (orientation:landscape)" ping="https://www.google.com https://github.com" class="type">
+                awa
+            </a>
         </div>
     </body>
 </html>
