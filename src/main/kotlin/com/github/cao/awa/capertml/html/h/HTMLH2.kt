@@ -15,7 +15,9 @@ class HTMLH2: HTMLTextable() {
         if (pretty) {
             builder.append(ident)
         }
-        builder.append("<h2>")
+        builder.append("<h2")
+        appendGlobal(builder)
+        builder.append(">")
         if (this.text != null) {
             builder.append(this.text)
         }

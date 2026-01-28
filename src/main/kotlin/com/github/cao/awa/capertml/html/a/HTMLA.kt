@@ -144,6 +144,7 @@ class HTMLA: HTMLTextable() {
         if (this.ping != null && !this.ping!!.isEmpty()) {
             builder.append(" ping=\"${this.ping}\"")
         }
+        appendGlobal(builder)
         if (getHtmlClass().isNotEmpty()) {
             builder.append(" class=\"")
             for (clazz in getHtmlClass()) {

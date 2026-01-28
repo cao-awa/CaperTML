@@ -14,7 +14,9 @@ class HTMLP: HTMLTextable() {
         if (pretty) {
             builder.append(ident)
         }
-        builder.append("<p>")
+        builder.append("<p")
+        appendGlobal(builder)
+        builder.append(">")
         if (this.text != null) {
             builder.append(this.text)
         }
