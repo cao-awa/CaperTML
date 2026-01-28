@@ -1,31 +1,21 @@
 package org.github.cao.awa.com.github.cao.awa.capertml.html
 
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.HTMLA
+import org.github.cao.awa.com.github.cao.awa.capertml.html.body.HTMLBody
 import org.github.cao.awa.com.github.cao.awa.capertml.html.div.HTMLDiv
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.HTMLHead
 import java.util.LinkedList
 
-class HTML: HTMLElement() {
-    private val elements: LinkedList<HTMLElement> = LinkedList()
+class HTML : HTMLElement() {
     private var head: HTMLHead = HTMLHead()
+    private var body: HTMLBody = HTMLBody()
 
-    fun a(body: HTMLA.() -> Unit) {
-        a("", body)
+    fun head(body: HTMLHead.() -> Unit) {
+        body(this.head)
     }
 
-    fun a(href: String, body: HTMLA.() -> Unit) {
-        HTMLA().also {
-            it.href(href)
-            body(it)
-            this.elements.add(it)
-        }
-    }
-
-    fun div(body: HTMLDiv.() -> Unit) {
-        HTMLDiv().also {
-            body(it)
-            this.elements.add(it)
-        }
+    fun body(body: HTMLBody.() -> Unit) {
+        body(this.body)
     }
 
     override fun toString(pretty: Boolean, ident: String): String {
@@ -34,17 +24,14 @@ class HTML: HTMLElement() {
         if (pretty) {
             builder.append("\n")
         }
-        builder.append(this.head.toString(pretty, ident))
-        builder.append("\n")
+        builder.append(this.head.toString(pretty, "$ident    "))
         builder.append("<html")
         builder.append(" lang=\"${getLang()}\"")
         builder.append(">")
         if (pretty) {
             builder.append("\n")
         }
-        this.elements.forEach { element ->
-            builder.append(element.toString(pretty, "$ident    "))
-        }
+        builder.append(this.body.toString(pretty, "$ident    "))
         builder.append("</html>")
         return builder.toString()
     }

@@ -9,24 +9,31 @@ import java.io.File
 fun main() {
     val html = html {
         lang("en")
-        div {
-            title("This is a title")
-            draggable()
-            a {
-                href("https://example.org")
-                hrefLang("zh")
-                text("awa")
-                target(HTMLATarget.PARENT)
-                ping {
-                    +"https://www.google.com"
-                    +"https://github.com"
+        head {
+            pageTitle {
+                +"TestPage"
+            }
+        }
+        body {
+            div {
+                title("This is a title")
+                draggable()
+                a {
+                    href("https://example.org")
+                    hrefLang("zh")
+                    text("awa")
+                    target(HTMLATarget.PARENT)
+                    ping {
+                        +"https://www.google.com"
+                        +"https://github.com"
+                    }
+                    media(
+                        HTMLADevice.ALL,
+                        HTMLAMediaOperator.AND,
+                        orientation(HTMLAMediaOrientations.LANDSCAPE)
+                    )
+                    hClass("type")
                 }
-                media(
-                    HTMLADevice.ALL,
-                    HTMLAMediaOperator.AND,
-                    orientation(HTMLAMediaOrientations.LANDSCAPE)
-                )
-                hClass("type")
             }
         }
     }

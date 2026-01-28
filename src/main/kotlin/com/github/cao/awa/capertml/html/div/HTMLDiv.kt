@@ -6,7 +6,6 @@ import java.util.LinkedList
 
 class HTMLDiv: HTMLElement() {
     private val elements: LinkedList<HTMLElement> = LinkedList()
-    private var title: String = ""
     private var hidden: Boolean = false
     private var role: String = ""
     private var ariaLabel: String = ""
@@ -16,10 +15,6 @@ class HTMLDiv: HTMLElement() {
     private var draggable: Boolean = false
     private var tabindex: Int = 0
     private var spellcheck: Boolean = false
-
-    fun title(title: String) {
-        this.title = title
-    }
 
     fun hidden() {
         this.hidden = true
@@ -82,8 +77,8 @@ class HTMLDiv: HTMLElement() {
         } else {
             builder.append("<div")
             builder.append(" lang=\"${getLang()}\"")
-            if (this.title.isNotEmpty()) {
-                builder.append(" title=\"${this.title}\"")
+            if (getTitle().isNotEmpty()) {
+                builder.append(" title=\"${getTitle()}\"")
             }
             if (this.ariaLabel.isNotEmpty()) {
                 builder.append(" aria-label=\"${this.ariaLabel}\"")
