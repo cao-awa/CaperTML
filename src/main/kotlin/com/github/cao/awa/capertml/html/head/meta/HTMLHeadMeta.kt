@@ -98,7 +98,6 @@ class HTMLHeadMeta: HTMLElement() {
             builder.append(" content=\"${this.content!!.value.stringify()}\"")
         }
         builder.append(">")
-        builder.append("</meta>")
         if (pretty) {
             builder.append("\n")
         }
