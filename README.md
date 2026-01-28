@@ -11,7 +11,7 @@ fun main() {
     val html = html {
         lang("en")
         head {
-            // This invoke is global attr in HTML, but will not be appending to generated HTML. 
+            // This invoke is global attr in HTML, but will not be appending to generated HTML.
             title("INVALID CASE")
             pageTitle {
                 +"TestPage"
@@ -30,12 +30,18 @@ fun main() {
                         +"https://www.google.com"
                         +"https://github.com"
                     }
+                    // Standard media style.
                     media(
                         HTMLADevice.ALL,
                         HTMLAMediaOperator.AND,
                         orientation(HTMLAMediaOrientations.LANDSCAPE)
                     )
                     classes("type", "test")
+                }
+                a {
+                    href("https://www.awa.com")
+                    // Shorter media style.
+                    media(all and landscape)
                 }
             }
         }
@@ -57,6 +63,9 @@ You will get these output:
         <div title="This is a title" draggable="true">
             <a href="https://example.org" hreflang="zh" target="_parent" media="all and (orientation:landscape)" ping="https://www.google.com https://github.com" class="type test">
                 awa
+            </a>
+            <a href="https://www.awa.com" media="all and (orientation:landscape)">
+                
             </a>
         </div>
     </body>

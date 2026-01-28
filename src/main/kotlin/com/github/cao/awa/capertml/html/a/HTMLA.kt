@@ -51,6 +51,10 @@ class HTMLA: HTMLElement() {
         this.target = target
     }
 
+    fun media(media: HTMLAMedia) {
+        this.media = media
+    }
+
     fun media(device: HTMLADevice, operator: HTMLAMediaOperator, value: HTMLAMediaValue) {
         this.media = HTMLAMedia(device, operator, value)
     }

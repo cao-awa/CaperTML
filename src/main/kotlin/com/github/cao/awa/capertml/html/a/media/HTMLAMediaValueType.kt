@@ -20,7 +20,7 @@ enum class HTMLAMediaValueType(val literal: String) {
     MONOCHROME("monochrome"),
     RESOLUTION("resolution"),
     SCAN("scan"),
-    GRID("gird"),
+    GRID("gird");
 }
 
 fun width(value: String, prefix: String = ""): HTMLAMediaWidthValue {

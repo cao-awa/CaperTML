@@ -1,8 +1,10 @@
 import org.github.cao.awa.com.github.cao.awa.capertml.html
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.HTMLADevice
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.HTMLAMediaOperator
+import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.all
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.orientation
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.value.orientation.HTMLAMediaOrientations
+import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.value.orientation.landscape
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.target.HTMLATarget
 import java.io.File
 
@@ -29,12 +31,18 @@ fun main() {
                         +"https://www.google.com"
                         +"https://github.com"
                     }
+                    // Standard media style.
                     media(
                         HTMLADevice.ALL,
                         HTMLAMediaOperator.AND,
                         orientation(HTMLAMediaOrientations.LANDSCAPE)
                     )
                     classes("type", "test")
+                }
+                a {
+                    href("https://www.awa.com")
+                    // Shorter media style.
+                    media(all and landscape)
                 }
             }
         }
