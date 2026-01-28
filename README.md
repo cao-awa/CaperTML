@@ -20,10 +20,12 @@ fun main() {
         head {
             meta {
                 charset(Charsets.UTF_8)
-                content(viewport {
+            }
+            meta {
+                viewport {
                     width(DEVICE_WIDTH)
                     initialScale(1.0)
-                })
+                }
             }
             pageTitle {
                 +"TestPage"
@@ -76,7 +78,8 @@ You will get these output:
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0"></meta>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"></meta>
         <title>TestPage</title>
     </head>
     <body>

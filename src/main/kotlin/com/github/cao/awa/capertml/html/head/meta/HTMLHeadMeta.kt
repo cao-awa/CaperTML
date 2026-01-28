@@ -4,6 +4,14 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.HTMLElement
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.HTMLHeadMetaContent
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.HTMLHeadMetaContentType
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.HTMLHeadMetaContentValue
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.rebot.HTMLHeadMetaRobotsContentBuilder
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.rebot.createRobots
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.referrer.HTMLHeadMetaReferrerContentBuilder
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.referrer.createReferrer
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.theme.HTMLHeadMetaThemeColorContentBuilder
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.theme.createThemeColor
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.viewport.builder.HTMLHeadMetaViewportContentBuilder
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.viewport.builder.createViewport
 import java.nio.charset.Charset
 
 class HTMLHeadMeta: HTMLElement() {
@@ -17,11 +25,27 @@ class HTMLHeadMeta: HTMLElement() {
         this.charset = charset
     }
 
-    fun content(name: HTMLHeadMetaContent<*>) {
+    fun content(content: HTMLHeadMetaContent<*>) {
         if (this.content != null) {
-            error("Name already set")
+            error("Meta content already set")
         }
-        this.content = name
+        this.content = content
+    }
+
+    fun viewport(builder: HTMLHeadMetaViewportContentBuilder.() -> Unit) {
+        content(createViewport(builder))
+    }
+
+    fun themeColor(builder: HTMLHeadMetaThemeColorContentBuilder.() -> Unit) {
+        content(createThemeColor(builder))
+    }
+
+    fun referrer(builder: HTMLHeadMetaReferrerContentBuilder.() -> Unit) {
+        content(createReferrer(builder))
+    }
+
+    fun robots(builder: HTMLHeadMetaRobotsContentBuilder.() -> Unit) {
+        content(createRobots(builder))
     }
 
     fun <T: HTMLHeadMetaContentValue<T>> content(type: HTMLHeadMetaContentType<T>, value: T) {
@@ -44,8 +68,6 @@ class HTMLHeadMeta: HTMLElement() {
         builder.append("<meta")
         if (this.charset != null) {
             builder.append(" charset=\"${this.charset!!.name()}\"")
-        } else {
-            builder.append(" charset=\"UTF-8\"")
         }
         if (this.content != null) {
             builder.append(" name=\"${this.content!!.type.literal}\"")

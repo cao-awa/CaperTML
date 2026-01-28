@@ -6,9 +6,6 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.orientation
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.value.orientation.HTMLAMediaOrientations
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.value.orientation.landscape
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.target.HTMLATarget
-import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.HTMLHeadMetaContentType
-import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.VIEWPORT
-import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.viewport.builder.viewport
 import org.github.cao.awa.com.github.cao.awa.capertml.style.width.DEVICE_WIDTH
 import java.io.File
 
@@ -18,10 +15,12 @@ fun main() {
         head {
             meta {
                 charset(Charsets.UTF_8)
-                content(viewport {
+            }
+            meta {
+                viewport {
                     width(DEVICE_WIDTH)
                     initialScale(1.0)
-                })
+                }
             }
             pageTitle {
                 +"TestPage"

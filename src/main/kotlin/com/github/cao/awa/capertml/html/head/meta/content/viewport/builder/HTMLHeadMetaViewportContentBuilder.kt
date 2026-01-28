@@ -43,7 +43,7 @@ class HTMLHeadMetaViewportContentBuilder {
     }
 }
 
-fun viewport(builder: HTMLHeadMetaViewportContentBuilder.() -> Unit): HTMLHeadMetaViewportContent {
+fun createViewport(builder: HTMLHeadMetaViewportContentBuilder.() -> Unit): HTMLHeadMetaViewportContent {
     return HTMLHeadMetaViewportContentBuilder().also {
         builder(it)
     }.build()
