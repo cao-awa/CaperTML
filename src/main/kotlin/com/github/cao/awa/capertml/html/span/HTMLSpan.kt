@@ -17,7 +17,9 @@ class HTMLSpan: HTMLTextableContainer() {
         if (pretty) {
             builder.append(ident)
         }
-        builder.append("<span>")
+        builder.append("<span")
+        appendGlobal(builder)
+        builder.append(">")
         if (pretty) {
             builder.append("\n")
         }
