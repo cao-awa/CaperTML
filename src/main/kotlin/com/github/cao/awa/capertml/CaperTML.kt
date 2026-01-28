@@ -9,15 +9,3 @@ fun html(body: HTML.() -> Unit): HTML {
         body(it)
     }
 }
-
-fun a(body: HTMLA.() -> Unit): HTMLA {
-    return HTMLA().also {
-        body(it)
-    }
-}
-
-fun div(body: HTMLDiv.() -> Unit): HTMLDiv {
-    return HTMLDiv().also {
-        body(it)
-    }
-}

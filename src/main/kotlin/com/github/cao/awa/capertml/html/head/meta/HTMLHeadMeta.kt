@@ -4,6 +4,14 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.HTMLElement
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.HTMLHeadMetaContent
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.HTMLHeadMetaContentType
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.HTMLHeadMetaContentValue
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.author.HTMLHeadMetaAuthorContentBuilder
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.author.createAuthor
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.color.HTMLHeadMetaColorSchemeContentBuilder
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.color.createColorScheme
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.description.HTMLHeadMetaDescriptionContentBuilder
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.description.createDescription
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.keyword.HTMLHeadMetaKeywordsContentBuilder
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.keyword.createKeywords
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.rebot.HTMLHeadMetaRobotsContentBuilder
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.rebot.createRobots
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.referrer.HTMLHeadMetaReferrerContentBuilder
@@ -46,6 +54,22 @@ class HTMLHeadMeta: HTMLElement() {
 
     fun robots(builder: HTMLHeadMetaRobotsContentBuilder.() -> Unit) {
         content(createRobots(builder))
+    }
+
+    fun keywords(builder: HTMLHeadMetaKeywordsContentBuilder.() -> Unit) {
+        content(createKeywords(builder))
+    }
+
+    fun description(builder: HTMLHeadMetaDescriptionContentBuilder.() -> Unit) {
+        content(createDescription(builder))
+    }
+
+    fun author(builder: HTMLHeadMetaAuthorContentBuilder.() -> Unit) {
+        content(createAuthor(builder))
+    }
+
+    fun colorScheme(builder: HTMLHeadMetaColorSchemeContentBuilder.() -> Unit) {
+        content(createColorScheme(builder))
     }
 
     fun <T: HTMLHeadMetaContentValue<T>> content(type: HTMLHeadMetaContentType<T>, value: T) {

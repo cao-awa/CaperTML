@@ -106,7 +106,10 @@ class HTMLDiv: HTMLElement() {
             if (this.hidden) {
                 builder.append(" hidden")
             }
-            builder.append(">\n")
+            builder.append(">")
+            if (pretty) {
+                builder.append("\n")
+            }
             this.elements.forEach { element ->
                 builder.append(element.toString(pretty, "$ident    "))
             }

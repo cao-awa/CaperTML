@@ -32,14 +32,20 @@ class HTMLBody: HTMLElement() {
         if (pretty) {
             builder.append(ident)
         }
-        builder.append("<body>\n")
+        builder.append("<body>")
+        if (pretty) {
+            builder.append("\n")
+        }
         for (element in this.elements) {
             builder.append(element.toString(pretty, "$ident    "))
         }
         if (pretty) {
             builder.append(ident)
         }
-        builder.append("</body>\n")
+        builder.append("</body>")
+        if (pretty) {
+            builder.append("\n")
+        }
         return builder.toString()
     }
 }

@@ -3,13 +3,15 @@ package org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.ke
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.HTMLHeadMetaContentValue
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.KEYWORDS
 
-class HTMLHeadMetaKeywordsContent(val keywords: Array<out String>) :
+class HTMLHeadMetaKeywordsContent(val keywords: ArrayList<String>) :
     HTMLHeadMetaContentValue<HTMLHeadMetaKeywordsContent>(
         KEYWORDS
     ) {
     companion object {
         fun of(vararg keywords: String): HTMLHeadMetaKeywordsContent {
-            return HTMLHeadMetaKeywordsContent(keywords)
+            return HTMLHeadMetaKeywordsContent(ArrayList<String>().also {
+                it.addAll(keywords)
+            })
         }
     }
 
