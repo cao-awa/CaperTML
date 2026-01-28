@@ -37,6 +37,12 @@ fun main() {
             div {
                 title("This is a title")
                 draggable()
+                h1 {
+                    +"Section title"
+                }
+                p {
+                    +"This is a p text"
+                }
                 a {
                     +"awa"
                     // Custom tag attr.

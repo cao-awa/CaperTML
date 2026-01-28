@@ -2,9 +2,12 @@ package org.github.cao.awa.com.github.cao.awa.capertml.html.div
 
 import org.github.cao.awa.com.github.cao.awa.capertml.html.HTMLElement
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.HTMLA
+import org.github.cao.awa.com.github.cao.awa.capertml.html.p.HTMLP
+import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLTextable
+import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLTextableContainer
 import java.util.LinkedList
 
-class HTMLDiv: HTMLElement() {
+class HTMLDiv: HTMLTextableContainer() {
     private val elements: LinkedList<HTMLElement> = LinkedList()
     private var hidden: Boolean = false
     private var role: String = ""
@@ -52,19 +55,8 @@ class HTMLDiv: HTMLElement() {
         this.spellcheck = true
     }
 
-    fun a(a: HTMLA.() -> Unit) {
-        HTMLA().also {
-            a(it)
-            this.elements.add(it)
-        }
-    }
-
-    fun a(href: String, body: HTMLA.() -> Unit): HTMLA {
-        return HTMLA().also {
-            it.href(href)
-            body(it)
-            this.elements.add(it)
-        }
+    override fun addTextable(textable: HTMLTextable) {
+        this.elements.add(textable)
     }
 
     override fun toString(pretty: Boolean, ident: String): String {

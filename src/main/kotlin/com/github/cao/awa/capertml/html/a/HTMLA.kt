@@ -10,8 +10,9 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.a.ping.HTMLAPingList
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.ref.HTMLAReferrerPolicy
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.rel.HTMLARelType
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.target.HTMLATarget
+import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLTextable
 
-class HTMLA: HTMLElement() {
+class HTMLA: HTMLTextable() {
     private var download: String = ""
     private var href: String = ""
     private var hrefLang: String = ""

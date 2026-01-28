@@ -27,6 +27,12 @@ fun main() {
                     initialScale(1.0)
                 }
             }
+            meta {
+                colorScheme {
+                    schema(HTMLColorSchemeType.DARK)
+                }
+            }
+
             pageTitle {
                 +"TestPage"
             }
@@ -35,6 +41,12 @@ fun main() {
             div {
                 title("This is a title")
                 draggable()
+                h1 {
+                    +"Section title"
+                }
+                p {
+                    +"This is a p text"
+                }
                 a {
                     +"awa"
                     // Custom tag attr.
@@ -78,12 +90,15 @@ You will get these output:
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8"></meta>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0"></meta>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta name="color-scheme" content="dark">
         <title>TestPage</title>
     </head>
     <body>
         <div title="This is a title" draggable="true">
+            <h1>Section title</h1>
+            <p>This is a p text</p>
             <a href="https://example.org" hreflang="zh" target="_parent" media="all and (orientation:landscape)" ping="https://www.google.com https://github.com" class="type test" my-tag="awa">
                 awa
             </a>
