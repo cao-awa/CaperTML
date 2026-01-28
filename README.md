@@ -5,7 +5,7 @@ CaperTML is a DSL-style strong type html template generator for kotlin.
 ![](https://count.getloli.com/get/@capertml?theme=rule34)
 
 # Do notice
-CaperTML are not a assembly as will tool, it enforces a subset of HTML content rules at compile time.
+CaperTML are not a assembly as will tool, it enforces a subset of HTML content rules at compile time, this is not a string template engine.
 
 It's making invalid HTML content cannot be produce.
 
