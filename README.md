@@ -11,6 +11,8 @@ fun main() {
     val html = html {
         lang("en")
         head {
+            // This invoke is global attr in HTML, but will not be appending to generated HTML. 
+            title("INVALID CASE")
             pageTitle {
                 +"TestPage"
             }
@@ -33,7 +35,7 @@ fun main() {
                         HTMLAMediaOperator.AND,
                         orientation(HTMLAMediaOrientations.LANDSCAPE)
                     )
-                    hClass("type")
+                    classes("type", "test")
                 }
             }
         }
@@ -53,7 +55,7 @@ You will get these output:
     </head>
     <body>
         <div title="This is a title" draggable="true">
-            <a href="https://example.org" hreflang="zh" target="_parent" media="all and (orientation:landscape)" ping="https://www.google.com https://github.com" class="type">
+            <a href="https://example.org" hreflang="zh" target="_parent" media="all and (orientation:landscape)" ping="https://www.google.com https://github.com" class="type test">
                 awa
             </a>
         </div>

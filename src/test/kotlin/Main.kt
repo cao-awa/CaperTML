@@ -10,6 +10,8 @@ fun main() {
     val html = html {
         lang("en")
         head {
+            // This invoke is global attr in HTML, but will not be appending to generated HTML.
+            title("INVALID CASE")
             pageTitle {
                 +"TestPage"
             }
@@ -32,7 +34,7 @@ fun main() {
                         HTMLAMediaOperator.AND,
                         orientation(HTMLAMediaOrientations.LANDSCAPE)
                     )
-                    hClass("type")
+                    classes("type", "test")
                 }
             }
         }

@@ -1,7 +1,7 @@
 package org.github.cao.awa.com.github.cao.awa.capertml.html
 
 abstract class HTMLElement {
-    private var hClass: String = ""
+    private var hClass: Array<out String> = arrayOf()
     private var id: String = ""
     private var lang: String = ""
     private var titleAttr: String = ""
@@ -12,7 +12,7 @@ abstract class HTMLElement {
         this.lang = lang
     }
 
-    fun hClass(name: String) {
+    fun classes(vararg name: String) {
         this.hClass = name
     }
 
@@ -26,7 +26,7 @@ abstract class HTMLElement {
 
     fun getLang(): String = this.lang
 
-    fun getHtmlClass(): String = this.hClass
+    fun getHtmlClass(): Array<out String> = this.hClass
 
     fun getId(): String = this.id
 

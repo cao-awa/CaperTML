@@ -102,7 +102,13 @@ class HTMLA: HTMLElement() {
             builder.append(" ping=\"${this.ping}\"")
         }
         if (getHtmlClass().isNotEmpty()) {
-            builder.append(" class=\"${getHtmlClass()}\"")
+            builder.append(" class=\"")
+            for (clazz in getHtmlClass()) {
+                builder.append(clazz)
+                builder.append(" ")
+            }
+            builder.delete(builder.length - 1, builder.length)
+            builder.append("\"")
         }
         if (getId().isNotEmpty()) {
             builder.append(" id=\"${getId()}\"")
