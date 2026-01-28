@@ -1,9 +1,13 @@
 package org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.rebot
 
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.HTMLHeadMetaContentValue
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.ROBOTS
 import org.github.cao.awa.com.github.cao.awa.capertml.robot.HTMLRobotPolicy
 
-class HTMLHeadMetaRobotsContent(val policies: Array<out HTMLRobotPolicy>): HTMLHeadMetaContentValue() {
+class HTMLHeadMetaRobotsContent(val policies: Array<out HTMLRobotPolicy>) :
+    HTMLHeadMetaContentValue<HTMLHeadMetaRobotsContent>(
+        ROBOTS
+    ) {
     companion object {
         fun of(vararg keywords: HTMLRobotPolicy): HTMLHeadMetaRobotsContent {
             return HTMLHeadMetaRobotsContent(keywords)

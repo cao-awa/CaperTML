@@ -1,10 +1,14 @@
 package org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.viewport
 
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.HTMLHeadMetaContentValue
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.VIEWPORT
 import org.github.cao.awa.com.github.cao.awa.capertml.style.HTMLStyle
 import org.github.cao.awa.com.github.cao.awa.capertml.style.HTMLStyleType
 
-class HTMLHeadMetaViewportContent(val styles: MutableMap<HTMLStyleType, HTMLStyle>): HTMLHeadMetaContentValue() {
+class HTMLHeadMetaViewportContent(val styles: MutableMap<HTMLStyleType, HTMLStyle>) :
+    HTMLHeadMetaContentValue<HTMLHeadMetaViewportContent>(
+        VIEWPORT
+    ) {
     override fun stringify(): String {
         val builder = StringBuilder()
         for ((type, style) in this.styles) {

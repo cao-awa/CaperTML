@@ -3,6 +3,8 @@ package org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.vi
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.viewport.HTMLHeadMetaViewportContent
 import org.github.cao.awa.com.github.cao.awa.capertml.style.HTMLStyle
 import org.github.cao.awa.com.github.cao.awa.capertml.style.HTMLStyleType
+import org.github.cao.awa.com.github.cao.awa.capertml.style.height.HTMLHeightStyle
+import org.github.cao.awa.com.github.cao.awa.capertml.style.scale.HTMLInitialScaleStyle
 import org.github.cao.awa.com.github.cao.awa.capertml.style.width.HTMLWidthStyle
 
 class HTMLHeadMetaViewportContentBuilder {
@@ -16,6 +18,25 @@ class HTMLHeadMetaViewportContentBuilder {
         this.styles[HTMLStyleType.WIDTH] = width
     }
 
+    fun height(px: Int) {
+        height(HTMLHeightStyle.of(px))
+    }
+
+    fun height(height: HTMLHeightStyle) {
+        this.styles[HTMLStyleType.HEIGHT] = height
+    }
+
+    fun initialScale(scale: Double) {
+        initialScale(scale.toFloat())
+    }
+
+    fun initialScale(scale: Float) {
+        initialScale(HTMLInitialScaleStyle.of(scale))
+    }
+
+    fun initialScale(scale: HTMLInitialScaleStyle) {
+        this.styles[HTMLStyleType.INITIAL_SCALE] = scale
+    }
 
     fun build(): HTMLHeadMetaViewportContent {
         return HTMLHeadMetaViewportContent(this.styles)

@@ -24,9 +24,15 @@ class HTMLHeadMeta: HTMLElement() {
         this.content = name
     }
 
-    fun <T: HTMLHeadMetaContentValue> content(type: HTMLHeadMetaContentType<T>, value: T) {
+    fun <T: HTMLHeadMetaContentValue<T>> content(type: HTMLHeadMetaContentType<T>, value: T) {
         content(
             HTMLHeadMetaContent(type, value)
+        )
+    }
+
+    fun <T: HTMLHeadMetaContentValue<T>> content(value: T) {
+        content(
+            HTMLHeadMetaContent(value.type, value)
         )
     }
 

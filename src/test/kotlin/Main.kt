@@ -18,8 +18,9 @@ fun main() {
         head {
             meta {
                 charset(Charsets.UTF_8)
-                content(VIEWPORT, viewport {
+                content(viewport {
                     width(DEVICE_WIDTH)
+                    initialScale(1.0)
                 })
             }
             pageTitle {

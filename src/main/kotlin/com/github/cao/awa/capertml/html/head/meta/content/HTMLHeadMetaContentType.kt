@@ -9,7 +9,7 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.ref
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.theme.HTMLHeadMetaThemeColorContent
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.viewport.HTMLHeadMetaViewportContent
 
-class HTMLHeadMetaContentType<T: HTMLHeadMetaContentValue>(val literal: String)
+class HTMLHeadMetaContentType<T: HTMLHeadMetaContentValue<T>>(val literal: String)
 
 val VIEWPORT = HTMLHeadMetaContentType<HTMLHeadMetaViewportContent>("viewport")
 val DESCRIPTION = HTMLHeadMetaContentType<HTMLHeadMetaDescriptionContent>("description")

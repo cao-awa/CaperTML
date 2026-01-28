@@ -1,8 +1,12 @@
 package org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.description
 
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.DESCRIPTION
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.HTMLHeadMetaContentValue
 
-class HTMLHeadMetaDescriptionContent(val description: String): HTMLHeadMetaContentValue() {
+class HTMLHeadMetaDescriptionContent(val description: String) :
+    HTMLHeadMetaContentValue<HTMLHeadMetaDescriptionContent>(
+        DESCRIPTION
+    ) {
     companion object {
         fun of(description: String): HTMLHeadMetaDescriptionContent {
             return HTMLHeadMetaDescriptionContent(description)

@@ -1,9 +1,13 @@
 package org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.color
 
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.COLOR_SCHEME
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.HTMLHeadMetaContentValue
 import org.github.cao.awa.com.github.cao.awa.capertml.style.color.HTMLColorSchemeType
 
-class HTMLHeadMetaColorSchemeColorContent(val color: HTMLColorSchemeType): HTMLHeadMetaContentValue() {
+class HTMLHeadMetaColorSchemeColorContent(val color: HTMLColorSchemeType) :
+    HTMLHeadMetaContentValue<HTMLHeadMetaColorSchemeColorContent>(
+        COLOR_SCHEME
+    ) {
     companion object {
         fun of(color: HTMLColorSchemeType): HTMLHeadMetaColorSchemeColorContent {
             return HTMLHeadMetaColorSchemeColorContent(color)
