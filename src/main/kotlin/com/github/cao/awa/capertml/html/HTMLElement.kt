@@ -19,6 +19,8 @@ abstract class HTMLElement {
     private var ariaHidden: Boolean = false
     private var ariaExpanded: Boolean = false
     private var role: String = ""
+    private var contextMenu: String = ""
+    private var accessKey: String = ""
 
     abstract fun toString(pretty: Boolean, ident: String): String
 
@@ -86,6 +88,14 @@ abstract class HTMLElement {
         this.role = role
     }
 
+    fun contextMenu(name: String) {
+        this.contextMenu = name
+    }
+
+    fun accessKey(key: String) {
+        this.accessKey = key
+    }
+
     fun getLang(): String = this.lang
 
     fun getHtmlClass(): Array<out String> = this.hClass
@@ -118,39 +128,50 @@ abstract class HTMLElement {
 
     fun getRole(): String = this.role
 
+    fun getContextMenu(): String = this.contextMenu
+
     fun appendGlobal(builder: StringBuilder) {
-        if (getLang().isNotEmpty()) {
-            builder.append(" lang=\"${getLang()}\"")
+        if (this.lang.isNotEmpty()) {
+            builder.append(" lang=\"${this.lang}\"")
         }
-        if (getTitle().isNotEmpty()) {
-            builder.append(" title=\"${getTitle()}\"")
+        if (this.titleAttr.isNotEmpty()) {
+            builder.append(" title=\"${this.titleAttr}\"")
         }
-        if (getArialLabel().isNotEmpty()) {
-            builder.append(" aria-label=\"${this.getArialLabel()}\"")
+        if (this.ariaLabel.isNotEmpty()) {
+            builder.append(" aria-label=\"${this.ariaLabel}\"")
         }
-        if (isArialHidden()) {
+        if (this.ariaHidden) {
             builder.append(" aria-hidden=\"true\"")
         }
-        if (isArialExpanded()) {
+        if (this.ariaExpanded) {
             builder.append(" aria-expanded=\"true\"")
         }
-        if (isContentEditable()) {
+        if (this.contentEditable) {
             builder.append(" contenteditable=\"true\"")
         }
-        if (isDraggable()) {
+        if (this.draggable) {
             builder.append(" draggable=\"true\"")
         }
-        if (getTabindex() > 0) {
-            builder.append(" tabindex=\"${getTabindex()}\"")
+        if (this.tabindex > 0) {
+            builder.append(" tabindex=\"${this.tabindex}\"")
         }
-        if (isSpellcheck()) {
+        if (this.spellcheck) {
             builder.append(" spellcheck=\"true\"")
         }
-        if (canTranslate()) {
+        if (this.translate) {
             builder.append(" translate=\"true\"")
         }
-        if (getDir() != HTMLDirection.AUTO) {
-            builder.append(" dir=\"${getDir().literal}\"")
+        if (this.dir != HTMLDirection.AUTO) {
+            builder.append(" dir=\"${this.dir.literal}\"")
+        }
+        if (this.role.isNotEmpty()) {
+            builder.append(" role=\"${this.role}\"")
+        }
+        if (this.contextMenu.isNotEmpty()) {
+            builder.append(" contextmenu=\"${this.contextMenu}\"")
+        }
+        if (this.accessKey.isNotEmpty()) {
+            builder.append(" accesskey=\"${this.accessKey}\"")
         }
         if (isHidden()) {
             builder.append(" hidden")

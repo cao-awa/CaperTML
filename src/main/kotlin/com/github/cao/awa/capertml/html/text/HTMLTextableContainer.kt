@@ -2,6 +2,7 @@ package org.github.cao.awa.com.github.cao.awa.capertml.html.text
 
 import org.github.cao.awa.com.github.cao.awa.capertml.html.HTMLElement
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.HTMLA
+import org.github.cao.awa.com.github.cao.awa.capertml.html.br.HTMLBr
 import org.github.cao.awa.com.github.cao.awa.capertml.html.h.HTMLH1
 import org.github.cao.awa.com.github.cao.awa.capertml.html.h.HTMLH2
 import org.github.cao.awa.com.github.cao.awa.capertml.html.h.HTMLH3
@@ -10,7 +11,7 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.h.HTMLH5
 import org.github.cao.awa.com.github.cao.awa.capertml.html.h.HTMLH6
 import org.github.cao.awa.com.github.cao.awa.capertml.html.p.HTMLP
 
-abstract class HTMLTextableContainer: HTMLElement() {
+abstract class HTMLTextableContainer : HTMLElement() {
     abstract fun addTextable(textable: HTMLTextable)
 
     fun a(a: HTMLA.() -> Unit) {
@@ -72,6 +73,19 @@ abstract class HTMLTextableContainer: HTMLElement() {
 
     fun h6(body: HTMLH6.() -> Unit) {
         HTMLH6().also {
+            body(it)
+            addTextable(it)
+        }
+    }
+
+    fun br() {
+        br {
+
+        }
+    }
+
+    fun br(body: HTMLBr.() -> Unit) {
+        HTMLBr().also {
             body(it)
             addTextable(it)
         }

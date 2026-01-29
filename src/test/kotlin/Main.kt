@@ -6,7 +6,7 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.orientation
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.value.orientation.HTMLAMediaOrientations
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.value.orientation.landscape
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.target.HTMLATarget
-import org.github.cao.awa.com.github.cao.awa.capertml.style.color.HTMLColorSchemeType
+import org.github.cao.awa.com.github.cao.awa.capertml.style.align.HTMLAlignType
 import org.github.cao.awa.com.github.cao.awa.capertml.style.width.DEVICE_WIDTH
 import java.io.File
 
@@ -23,12 +23,6 @@ fun main() {
                     initialScale(1.0)
                 }
             }
-            meta {
-                colorScheme {
-                    schema(HTMLColorSchemeType.DARK)
-                }
-            }
-
             pageTitle {
                 +"TestPage"
             }
@@ -45,6 +39,8 @@ fun main() {
                         +"This is a p text"
                     }
                 }
+                br()
+                br()
                 a {
                     +"awa"
                     // Custom tag attr.
