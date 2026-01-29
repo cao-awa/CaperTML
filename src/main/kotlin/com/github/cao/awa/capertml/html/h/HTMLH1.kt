@@ -3,7 +3,7 @@ package org.github.cao.awa.com.github.cao.awa.capertml.html.h
 import org.github.cao.awa.com.github.cao.awa.capertml.html.HTMLElement
 import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLTextable
 
-class HTMLH1: HTMLTextable() {
+class HTMLH1: HTMLElement(), HTMLTextable {
     private var text: String? = null
 
     operator fun String.unaryPlus() {

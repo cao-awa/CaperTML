@@ -5,13 +5,14 @@ import org.github.cao.awa.com.github.cao.awa.capertml.style.HTMLStyle
 import org.github.cao.awa.com.github.cao.awa.capertml.style.HTMLStyleType
 import org.github.cao.awa.com.github.cao.awa.capertml.style.height.HTMLHeightStyle
 import org.github.cao.awa.com.github.cao.awa.capertml.style.scale.HTMLInitialScaleStyle
+import org.github.cao.awa.com.github.cao.awa.capertml.style.unit.HTMLStyleNumberUnit
 import org.github.cao.awa.com.github.cao.awa.capertml.style.width.HTMLWidthStyle
 
 class HTMLHeadMetaViewportContentBuilder {
     private val styles:  MutableMap<HTMLStyleType, HTMLStyle> = mutableMapOf()
 
     fun width(px: Int) {
-        width(HTMLWidthStyle.of(px))
+        width(HTMLWidthStyle.of(px, HTMLStyleNumberUnit.PX))
     }
 
     fun width(width: HTMLWidthStyle) {
@@ -19,7 +20,7 @@ class HTMLHeadMetaViewportContentBuilder {
     }
 
     fun height(px: Int) {
-        height(HTMLHeightStyle.of(px))
+        height(HTMLHeightStyle.of(px, HTMLStyleNumberUnit.PX))
     }
 
     fun height(height: HTMLHeightStyle) {

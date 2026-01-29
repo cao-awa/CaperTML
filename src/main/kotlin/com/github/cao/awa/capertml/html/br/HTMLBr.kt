@@ -1,9 +1,10 @@
 package org.github.cao.awa.com.github.cao.awa.capertml.html.br
 
+import org.github.cao.awa.com.github.cao.awa.capertml.html.HTMLElement
 import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLTextable
 import org.github.cao.awa.com.github.cao.awa.capertml.style.align.HTMLAlignType
 
-class HTMLBr: HTMLTextable() {
+class HTMLBr: HTMLElement(), HTMLTextable {
     override fun toString(pretty: Boolean, ident: String): String {
         val builder = StringBuilder()
         if (pretty) {

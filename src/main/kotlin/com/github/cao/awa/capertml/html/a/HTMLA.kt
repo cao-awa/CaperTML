@@ -12,7 +12,7 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.a.rel.HTMLARelType
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.target.HTMLATarget
 import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLTextable
 
-class HTMLA: HTMLTextable() {
+class HTMLA: HTMLElement(), HTMLTextable {
     private var download: String = ""
     private var href: String = ""
     private var hrefLang: String = ""

@@ -9,7 +9,7 @@ class HTMLSpan: HTMLTextableContainer() {
     private val elements: LinkedList<HTMLElement> = LinkedList()
 
     override fun addTextable(textable: HTMLTextable) {
-        this.elements.add(textable)
+        this.elements.add(textable as HTMLElement)
     }
 
     override fun toString(pretty: Boolean, ident: String): String {

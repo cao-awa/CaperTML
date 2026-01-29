@@ -1,23 +1,32 @@
 package org.github.cao.awa.com.github.cao.awa.capertml.style.height
 
 import org.github.cao.awa.com.github.cao.awa.capertml.style.HTMLStyle
+import org.github.cao.awa.com.github.cao.awa.capertml.style.unit.HTMLStyleNumberUnit
 
-class HTMLHeightStyle(val px: Int): HTMLStyle() {
+class HTMLHeightStyle(val number: Int, val unit: HTMLStyleNumberUnit): HTMLStyle() {
     companion object {
-        fun of(px: Int): HTMLHeightStyle {
-            if (px == -1) {
+        fun of(number: Int, unit: HTMLStyleNumberUnit): HTMLHeightStyle {
+            if (number == -1) {
                 return DEVICE_HEIGHT
             }
-            return HTMLHeightStyle(px)
+            return HTMLHeightStyle(number, unit)
+        }
+
+        fun px(px: Int): HTMLHeightStyle {
+            return of(px, HTMLStyleNumberUnit.PX)
+        }
+
+        fun em(px: Int): HTMLHeightStyle {
+            return of(px, HTMLStyleNumberUnit.EM)
         }
     }
 
     override fun stringify(): String {
-        if (this.px < 0) {
+        if (this.number < 0) {
             return "device-height"
         }
-        return this.px.toString()
+        return this.number.toString() + this.unit.literal
     }
 }
 
-val DEVICE_HEIGHT: HTMLHeightStyle = HTMLHeightStyle(-1)
+val DEVICE_HEIGHT: HTMLHeightStyle = HTMLHeightStyle(-1, HTMLStyleNumberUnit.NONE)

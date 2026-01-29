@@ -37,6 +37,11 @@ fun main() {
                 span {
                     p {
                         +"This is a p text"
+                        img {
+                            src("/awa.png")
+                        }
+                        br()
+                        +"text"
                     }
                 }
                 br()
