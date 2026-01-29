@@ -49,7 +49,9 @@ fun main() {
                         }
                         b {
                             +"Notice 2"
+                            classes("the-b")
                         }
+                        classes("the-p")
                     }
                 }
                 br()

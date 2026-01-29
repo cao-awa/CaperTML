@@ -145,6 +145,15 @@ abstract class HTMLElement {
         if (this.lang.isNotEmpty()) {
             builder.append(" lang=\"${this.lang}\"")
         }
+        if (this.classes.isNotEmpty()) {
+            builder.append(" class=\"")
+            for (clazz in this.classes) {
+                builder.append(clazz)
+                builder.append(" ")
+            }
+            builder.delete(builder.length - 1, builder.length)
+            builder.append("\"")
+        }
         if (this.author.isNotEmpty()) {
             builder.append(" author=\"${this.author}\"")
         }

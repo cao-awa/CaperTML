@@ -5,7 +5,9 @@ CaperTML is a DSL-style strong type html template generator for kotlin.
 ![](https://count.getloli.com/get/@capertml?theme=rule34)
 
 ## Do notice
-CaperTML are not a assembly as will tool, it enforces a subset of HTML content rules at compile time, this is not a string template engine.
+
+CaperTML are not a assembly as will tool, it enforces a subset of HTML content rules at compile time, this is not a
+string template engine.
 
 It's making invalid HTML content cannot be produce.
 
@@ -14,77 +16,85 @@ It's making invalid HTML content cannot be produce.
 Execute the code:
 
 ```kotlin
+fun main() {
     val html = html {
-    lang("en")
-    head {
-        meta {
-            charset(Charsets.UTF_8)
-        }
-        meta {
-            viewport {
-                width(DEVICE_WIDTH)
-                initialScale(1.0)
+        lang("en")
+        head {
+            meta {
+                charset(Charsets.UTF_8)
+            }
+            meta {
+                viewport {
+                    width(DEVICE_WIDTH)
+                    initialScale(1.0)
+                }
+            }
+            pageTitle {
+                +"TestPage"
             }
         }
-        pageTitle {
-            +"TestPage"
-        }
-    }
-    body {
-        div {
-            draggable()
-            title("This is a title")
-            h1 {
-                +"Section title"
-            }
-            span {
-                p {
-                    +"This is a p text"
-                    img {
-                        src("/awa.png")
-                        width(DEVICE_WIDTH)
-                        height(DEVICE_HEIGHT)
+        body {
+            div {
+                draggable()
+                title("This is a title")
+                h1 {
+                    +"Section title"
+                }
+                span {
+                    p {
+                        +"This is a p text"
+                        img {
+                            src("/awa.png")
+                            width(DEVICE_WIDTH)
+                            height(DEVICE_HEIGHT)
+                        }
+                        br()
+                        em {
+                            +"notice"
+                        }
+                        b {
+                            +"Notice 2"
+                            classes("the-b")
+                        }
+                        classes("the-p")
                     }
-                    br()
-                    +"text"
                 }
-            }
-            br()
-            br()
-            a {
-                +"awa"
-                // Custom tag attr.
-                custom("my-tag", "awa")
-                // Href.
-                href("https://example.org")
-                // Href lang.
-                hrefLang("zh")
-                // Target.
-                target(HTMLATarget.PARENT)
-                // Ping list.
-                ping {
-                    +"https://www.google.com"
-                    +"https://github.com"
+                br()
+                br()
+                a {
+                    +"awa"
+                    // Custom tag attr.
+                    custom("my-tag", "awa")
+                    // Href.
+                    href("https://example.org")
+                    // Href lang.
+                    hrefLang("zh")
+                    // Target.
+                    target(HTMLATarget.PARENT)
+                    // Ping list.
+                    ping {
+                        +"https://www.google.com"
+                        +"https://github.com"
+                    }
+                    // Standard media style.
+                    media(
+                        HTMLADevice.ALL,
+                        HTMLAMediaOperator.AND,
+                        orientation(HTMLAMediaOrientations.LANDSCAPE)
+                    )
+                    // Element classes.
+                    classes("type", "test")
                 }
-                // Standard media style.
-                media(
-                    HTMLADevice.ALL,
-                    HTMLAMediaOperator.AND,
-                    orientation(HTMLAMediaOrientations.LANDSCAPE)
-                )
-                // Element classes.
-                classes("type", "test")
-            }
-            a {
-                href("https://www.awa.com")
-                // Shorter media style.
-                media(all and landscape)
+                a {
+                    href("https://www.awa.com")
+                    // Shorter media style.
+                    media(all and landscape)
+                }
             }
         }
     }
-}
 
-println(html.toString(true, ""))
+    println(html.toString(true, ""))
 }
 ```
 
@@ -102,16 +112,17 @@ You will get these output:
         <div title="This is a title" draggable="true">
             <h1>Section title</h1>
             <span>
-                <p>
+                <p class="the-p">
                     This is a p text
                     <img src="/awa.png" width="device-width" height="device-height">
                     <br />
-                    text
+                    <em>notice</em>
+                    <b class="the-b">Notice 2</b>
                 </p>
             </span>
             <br />
             <br />
-            <a href="https://example.org" hreflang="zh" target="_parent" media="all and (orientation:landscape)" ping="https://www.google.com https://github.com" class="type test" data-my-tag="awa">
+            <a href="https://example.org" hreflang="zh" target="_parent" media="all and (orientation:landscape)" ping="https://www.google.com https://github.com" class="type test" class="type test" data-my-tag="awa">
                 awa
             </a>
             <a href="https://www.awa.com" media="all and (orientation:landscape)">
@@ -178,7 +189,8 @@ This provides:
 * Self-documenting APIs
 * Reduced reliance on external HTML references
 
-When necessary, controlled escape hatches (such as custom attributes) are provided, but they are **explicit**, not implicit.
+When necessary, controlled escape hatches (such as custom attributes) are provided, but they are **explicit**, not
+implicit.
 
 ### Subset by Design
 
@@ -215,7 +227,8 @@ It is **not** intended for:
 
 CaperTML treats HTML as a **structured language**, not a string.
 
-By encoding HTML rules into the type system, it shifts error detection from runtime to compile time and makes invalid HTML **unrepresentable**.
+By encoding HTML rules into the type system, it shifts error detection from runtime to compile time and makes invalid
+HTML **unrepresentable**.
 
 Correctness is not an option — it is the default.
 
