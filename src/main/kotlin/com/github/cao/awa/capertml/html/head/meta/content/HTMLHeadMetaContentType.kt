@@ -1,5 +1,6 @@
 package org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content
 
+import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.HTMLHeadMetaType
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.author.HTMLHeadMetaAuthorContent
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.color.HTMLHeadMetaColorSchemeColorContent
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.description.HTMLHeadMetaDescriptionContent
@@ -9,7 +10,7 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.ref
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.theme.HTMLHeadMetaThemeColorContent
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.viewport.HTMLHeadMetaViewportContent
 
-class HTMLHeadMetaContentType<T: HTMLHeadMetaContentValue<T>>(val literal: String)
+class HTMLHeadMetaContentType<T: HTMLHeadMetaContentValue<T>>(literal: String): HTMLHeadMetaType(literal)
 
 val VIEWPORT = HTMLHeadMetaContentType<HTMLHeadMetaViewportContent>("viewport")
 val DESCRIPTION = HTMLHeadMetaContentType<HTMLHeadMetaDescriptionContent>("description")

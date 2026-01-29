@@ -14,14 +14,10 @@ fun main() {
     val html = html {
         lang("en")
         head {
-            meta {
-                charset(Charsets.UTF_8)
-            }
-            meta {
-                viewport {
-                    width(DEVICE_WIDTH)
-                    initialScale(1.0)
-                }
+            charset(Charsets.UTF_8)
+            viewport {
+                width(DEVICE_WIDTH)
+                initialScale(1.0)
             }
             pageTitle {
                 +"TestPage"

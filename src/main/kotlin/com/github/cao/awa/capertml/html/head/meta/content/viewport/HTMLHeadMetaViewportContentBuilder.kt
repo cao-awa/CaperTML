@@ -1,6 +1,5 @@
-package org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.viewport.builder
+package org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.viewport
 
-import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content.viewport.HTMLHeadMetaViewportContent
 import org.github.cao.awa.com.github.cao.awa.capertml.style.HTMLStyle
 import org.github.cao.awa.com.github.cao.awa.capertml.style.HTMLStyleType
 import org.github.cao.awa.com.github.cao.awa.capertml.style.height.HTMLHeightStyle

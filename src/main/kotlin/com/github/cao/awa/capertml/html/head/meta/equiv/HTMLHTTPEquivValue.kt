@@ -1,12 +1,8 @@
-package org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content
+package org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.equiv
 
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.HTMLHeadMeta
-import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.HTMLHeadMetaType
 
-abstract class HTMLHeadMetaContentValue<T : HTMLHeadMetaContentValue<T>>(val type: HTMLHeadMetaContentType<T>) :
-    HTMLHeadMeta<HTMLHeadMetaContentValue<T>>(
-        type
-    ) {
+abstract class HTMLHTTPEquivValue<T: HTMLHTTPEquivValue<T>>(val type: HTMLHTTPEquivType<T>): HTMLHeadMeta<HTMLHTTPEquivValue<T>>(type) {
     abstract fun stringify(): String
 
     override fun toString(pretty: Boolean, ident: String): String {
@@ -15,7 +11,7 @@ abstract class HTMLHeadMetaContentValue<T : HTMLHeadMetaContentValue<T>>(val typ
             builder.append(ident)
         }
         builder.append("<meta")
-        builder.append(" name=\"${this.type.literal}\"")
+        builder.append(" http-equiv=\"${this.type.literal}\"")
         builder.append(" content=\"${stringify()}\"")
         builder.append(">")
         if (pretty) {
