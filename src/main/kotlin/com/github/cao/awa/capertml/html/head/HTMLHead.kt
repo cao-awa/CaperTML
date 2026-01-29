@@ -42,7 +42,7 @@ class HTMLHead: HTMLElement() {
     fun content(content: HTMLHeadMeta<*>) {
         val currentData = this.metadata[content.metaType]
         if (currentData != null) {
-            error("Meta content '${content.metaType.literal}' cannot set because it already set to '${currentData.metaType.literal}'")
+            error("Meta content '${content.metaType.literal}' cannot set because it already set to '${currentData.valueLiteral()}'")
         }
         this.metadata[content.metaType] = content
     }
@@ -85,21 +85,27 @@ class HTMLHead: HTMLElement() {
         content(createColorScheme(builder))
     }
 
-    fun refresh(builder: HTMLHeadMetaRefreshEquivValueBuilder.() -> Unit) {
-        content(createRefresh(builder))
-    }
-
-
     fun contentSecurityPolicy(builder: HTMLHeadMetaContentSecurityPolicyEquivValueBuilder.() -> Unit) {
         content(createContentSecurityPolicy(builder))
     }
 
     @Deprecated(level = DeprecationLevel.WARNING, message = "Not recommented to use")
+    fun refresh(builder: HTMLHeadMetaRefreshEquivValueBuilder.() -> Unit) {
+        content(createRefresh(builder))
+    }
+
+    @Deprecated(level = DeprecationLevel.WARNING, message = "Not recommented to use, use css instead")
     fun defaultStyle(builder: HTMLHeadMetaDefaultStyleEquivValueBuilder.() -> Unit) {
         content(createDefaultStyle(builder))
     }
 
-    @Deprecated(level = DeprecationLevel.WARNING, message = "Not recommented to use")
+    @Deprecated(
+        level = DeprecationLevel.WARNING,
+        message = "Not recommented to use",
+        replaceWith = ReplaceWith(
+            expression = "charset(Charsets.UTF_8)"
+        )
+    )
     fun contentType(builder: HTMLHeadMetaContentTypeEquivValueBuilder.() -> Unit) {
         content(createContentType(builder))
     }

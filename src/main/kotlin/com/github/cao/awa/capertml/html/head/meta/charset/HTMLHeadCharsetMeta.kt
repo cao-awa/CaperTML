@@ -4,7 +4,7 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.HTMLHeadMet
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.HTMLHeadMetaType
 import java.nio.charset.Charset
 
-class HTMLHeadCharsetMeta: HTMLHeadMeta<HTMLHeadCharsetMeta>(HTMLHeadMetaType.Companion.CHARSET) {
+class HTMLHeadCharsetMeta: HTMLHeadMeta<HTMLHeadCharsetMeta>(HTMLHeadMetaType.CHARSET) {
     private var charset: Charset? = null
 
     fun charset(charset: Charset) {
@@ -28,5 +28,9 @@ class HTMLHeadCharsetMeta: HTMLHeadMeta<HTMLHeadCharsetMeta>(HTMLHeadMetaType.Co
             builder.append("\n")
         }
         return builder.toString()
+    }
+
+    override fun valueLiteral(): String {
+        return this.charset!!.name()
     }
 }

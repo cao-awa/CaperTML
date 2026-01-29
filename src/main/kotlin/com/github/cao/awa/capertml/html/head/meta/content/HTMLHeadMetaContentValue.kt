@@ -1,13 +1,14 @@
 package org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.content
 
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.HTMLHeadMeta
-import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.HTMLHeadMetaType
 
 abstract class HTMLHeadMetaContentValue<T : HTMLHeadMetaContentValue<T>>(val type: HTMLHeadMetaContentType<T>) :
     HTMLHeadMeta<HTMLHeadMetaContentValue<T>>(
         type
     ) {
     abstract fun stringify(): String
+
+    override fun valueLiteral(): String = stringify()
 
     override fun toString(pretty: Boolean, ident: String): String {
         val builder = StringBuilder()

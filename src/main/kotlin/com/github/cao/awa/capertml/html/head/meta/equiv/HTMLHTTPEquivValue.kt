@@ -5,6 +5,8 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.HTMLHeadMet
 abstract class HTMLHTTPEquivValue<T: HTMLHTTPEquivValue<T>>(val type: HTMLHTTPEquivType<T>): HTMLHeadMeta<HTMLHTTPEquivValue<T>>(type) {
     abstract fun stringify(): String
 
+    override fun valueLiteral(): String = stringify()
+
     override fun toString(pretty: Boolean, ident: String): String {
         val builder = StringBuilder()
         if (pretty) {

@@ -1,6 +1,12 @@
 package org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.equiv.type
 
-@Deprecated(level = DeprecationLevel.WARNING, message = "Not recommented to use")
+@Deprecated(
+    level = DeprecationLevel.WARNING,
+    message = "Not recommented to use",
+    replaceWith = ReplaceWith(
+        expression = "charset(Charsets.UTF_8)"
+    )
+)
 class HTMLHeadMetaContentTypeEquivValueBuilder {
     private var contentType: String = ""
 
