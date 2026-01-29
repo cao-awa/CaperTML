@@ -7,7 +7,7 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLTextable
 class HTMLEm: HTMLElement(), HTMLTextable {
     private var text: String = ""
 
-    fun text(text: String) {
+    override fun text(text: String) {
         this.text = text
     }
 

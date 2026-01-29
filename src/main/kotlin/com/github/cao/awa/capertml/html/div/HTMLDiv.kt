@@ -1,15 +1,11 @@
 package org.github.cao.awa.com.github.cao.awa.capertml.html.div
 
 import org.github.cao.awa.com.github.cao.awa.capertml.html.HTMLElement
-import org.github.cao.awa.com.github.cao.awa.capertml.html.a.HTMLA
-import org.github.cao.awa.com.github.cao.awa.capertml.html.direction.HTMLDirection
-import org.github.cao.awa.com.github.cao.awa.capertml.html.p.HTMLP
 import org.github.cao.awa.com.github.cao.awa.capertml.html.span.HTMLSpan
-import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLTextable
-import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLTextableContainer
+import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLFlowContentContainer
 import java.util.LinkedList
 
-class HTMLDiv: HTMLTextableContainer() {
+class HTMLDiv: HTMLFlowContentContainer() {
     private val elements: LinkedList<HTMLElement> = LinkedList()
 
     fun span(span: HTMLSpan.() -> Unit) {
@@ -19,8 +15,8 @@ class HTMLDiv: HTMLTextableContainer() {
         }
     }
 
-    override fun addTextable(textable: HTMLTextable) {
-        this.elements.add(textable as HTMLElement)
+    override fun addElement(element: HTMLElement) {
+        this.elements.add(element)
     }
 
     override fun toString(pretty: Boolean, ident: String): String {

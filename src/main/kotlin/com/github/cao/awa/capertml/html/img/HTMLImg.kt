@@ -1,11 +1,12 @@
 package org.github.cao.awa.com.github.cao.awa.capertml.html.img
 
+import org.github.cao.awa.com.github.cao.awa.capertml.context.HTMLPhrasingContext
 import org.github.cao.awa.com.github.cao.awa.capertml.html.HTMLElement
 import org.github.cao.awa.com.github.cao.awa.capertml.style.height.HTMLHeightStyle
 import org.github.cao.awa.com.github.cao.awa.capertml.style.unit.HTMLStyleNumberUnit
 import org.github.cao.awa.com.github.cao.awa.capertml.style.width.HTMLWidthStyle
 
-class HTMLImg: HTMLElement() {
+class HTMLImg: HTMLElement(), HTMLPhrasingContext {
     private var src: String = ""
     private var width: HTMLWidthStyle? = null
     private var height: HTMLHeightStyle? = null

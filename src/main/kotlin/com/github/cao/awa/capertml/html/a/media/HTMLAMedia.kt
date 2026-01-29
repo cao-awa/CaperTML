@@ -6,7 +6,7 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.value.HTMLAMe
 class HTMLAMedia(
     val device: HTMLADevice,
     val operator: HTMLAMediaOperator,
-    val value: HTMLAMediaValue
+    val value: HTMLAMediaValue<*>
 ) {
     override fun toString(): String {
         val builder = StringBuilder()

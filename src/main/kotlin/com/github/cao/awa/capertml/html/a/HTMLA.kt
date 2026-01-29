@@ -1,5 +1,6 @@
 package org.github.cao.awa.com.github.cao.awa.capertml.html.a
 
+import org.github.cao.awa.com.github.cao.awa.capertml.context.HTMLPhrasingContext
 import org.github.cao.awa.com.github.cao.awa.capertml.html.HTMLElement
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.HTMLADevice
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.HTMLAMedia
@@ -12,7 +13,7 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.a.rel.HTMLARelType
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.target.HTMLATarget
 import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLTextable
 
-class HTMLA: HTMLElement(), HTMLTextable {
+class HTMLA: HTMLElement(), HTMLTextable, HTMLPhrasingContext {
     private var download: String = ""
     private var href: String = ""
     private var hrefLang: String = ""
@@ -59,7 +60,7 @@ class HTMLA: HTMLElement(), HTMLTextable {
         this.rel = type
     }
 
-    fun text(text: String) {
+    override fun text(text: String) {
         setText(text)
     }
 

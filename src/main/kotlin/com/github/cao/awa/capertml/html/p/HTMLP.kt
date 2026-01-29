@@ -2,14 +2,14 @@ package org.github.cao.awa.com.github.cao.awa.capertml.html.p
 
 import org.github.cao.awa.com.github.cao.awa.capertml.html.HTMLElement
 import org.github.cao.awa.com.github.cao.awa.capertml.html.img.HTMLImg
-import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLImageContainer
+import org.github.cao.awa.com.github.cao.awa.capertml.html.span.HTMLSpan
+import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLFlowContentContainer
 import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLText
 import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLTextable
-import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLTextableContainer
 import org.github.cao.awa.com.github.cao.awa.capertml.style.align.HTMLAlignType
 import java.util.LinkedList
 
-class HTMLP: HTMLTextableContainer(), HTMLTextable, HTMLImageContainer {
+class HTMLP: HTMLFlowContentContainer(), HTMLTextable {
     private val elements: LinkedList<HTMLElement> = LinkedList()
     @Deprecated(level = DeprecationLevel.WARNING, message = "Deprecated in HTML5 and HTML 4.01")
     private var align: HTMLAlignType? = null
@@ -25,6 +25,13 @@ class HTMLP: HTMLTextableContainer(), HTMLTextable, HTMLImageContainer {
     @Deprecated(level = DeprecationLevel.WARNING, message = "Deprecated in HTML5 and HTML 4.01")
     fun align(align: HTMLAlignType) {
         this. align = align
+    }
+
+    fun span(body: HTMLSpan.() -> Unit) {
+        HTMLSpan().also {
+            body(it)
+            this.elements.add(it)
+        }
     }
 
     override fun toString(pretty: Boolean, ident: String): String {
@@ -58,11 +65,20 @@ class HTMLP: HTMLTextableContainer(), HTMLTextable, HTMLImageContainer {
         return builder.toString()
     }
 
-    override fun addImage(img: HTMLImg) {
-        this.elements.add(img)
+    override fun img(body: HTMLImg.() -> Unit) {
+        HTMLImg().also {
+            body(it)
+            this.elements.add(it)
+        }
     }
 
-    override fun addTextable(textable: HTMLTextable) {
-        this.elements.add(textable as HTMLElement)
+    override fun addElement(element: HTMLElement) {
+        this.elements.add(element)
+    }
+
+    override fun text(text: String) {
+        this.elements.add(HTMLText().apply {
+            text(text)
+        })
     }
 }

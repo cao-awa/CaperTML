@@ -16,10 +16,4 @@ import org.w3c.dom.html.HTMLImageElement
 interface HTMLImageContainer {
     fun addImage(img: HTMLImg)
 
-    fun img(body: HTMLImg.() -> Unit) {
-        HTMLImg().also {
-            body(it)
-            addImage(it)
-        }
-    }
 }

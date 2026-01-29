@@ -1,12 +1,12 @@
 package org.github.cao.awa.com.github.cao.awa.capertml.html.span
 
+import org.github.cao.awa.com.github.cao.awa.capertml.context.HTMLPhrasingContext
 import org.github.cao.awa.com.github.cao.awa.capertml.html.HTMLElement
 import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLText
 import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLTextable
-import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLTextableContainer
 import java.util.LinkedList
 
-class HTMLSpan: HTMLTextableContainer() {
+class HTMLSpan: HTMLElement(), HTMLTextable, HTMLPhrasingContext {
     private val elements: LinkedList<HTMLElement> = LinkedList()
 
     operator fun String.unaryPlus() {
@@ -15,8 +15,10 @@ class HTMLSpan: HTMLTextableContainer() {
         })
     }
 
-    override fun addTextable(textable: HTMLTextable) {
-        this.elements.add(textable as HTMLElement)
+    override fun text(text: String) {
+        this.elements.add(HTMLText().apply {
+            text(text)
+        })
     }
 
     override fun toString(pretty: Boolean, ident: String): String {

@@ -12,15 +12,16 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.h.HTMLH4
 import org.github.cao.awa.com.github.cao.awa.capertml.html.h.HTMLH5
 import org.github.cao.awa.com.github.cao.awa.capertml.html.h.HTMLH6
 import org.github.cao.awa.com.github.cao.awa.capertml.html.i.HTMLI
+import org.github.cao.awa.com.github.cao.awa.capertml.html.img.HTMLImg
 import org.github.cao.awa.com.github.cao.awa.capertml.html.p.HTMLP
 
-abstract class HTMLTextableContainer : HTMLElement() {
-    abstract fun addTextable(textable: HTMLTextable)
+abstract class HTMLFlowContentContainer : HTMLElement() {
+    abstract fun addElement(element: HTMLElement)
 
     fun a(a: HTMLA.() -> Unit) {
         HTMLA().also {
             a(it)
-            addTextable(it)
+            addElement(it)
         }
     }
 
@@ -28,56 +29,56 @@ abstract class HTMLTextableContainer : HTMLElement() {
         HTMLA().also {
             it.href(href)
             body(it)
-            addTextable(it)
+            addElement(it)
         }
     }
 
     fun p(body: HTMLP.() -> Unit) {
         HTMLP().also {
             body(it)
-            addTextable(it)
+            addElement(it)
         }
     }
 
-    fun h1(body: HTMLH1.() -> Unit) {
+    open fun h1(body: HTMLH1.() -> Unit) {
         HTMLH1().also {
             body(it)
-            addTextable(it)
+            addElement(it)
         }
     }
 
-    fun h2(body: HTMLH2.() -> Unit) {
+    open fun h2(body: HTMLH2.() -> Unit) {
         HTMLH2().also {
             body(it)
-            addTextable(it)
+            addElement(it)
         }
     }
 
-    fun h3(body: HTMLH3.() -> Unit) {
+    open fun h3(body: HTMLH3.() -> Unit) {
         HTMLH3().also {
             body(it)
-            addTextable(it)
+            addElement(it)
         }
     }
 
-    fun h4(body: HTMLH4.() -> Unit) {
+    open fun h4(body: HTMLH4.() -> Unit) {
         HTMLH4().also {
             body(it)
-            addTextable(it)
+            addElement(it)
         }
     }
 
-    fun h5(body: HTMLH5.() -> Unit) {
+    open fun h5(body: HTMLH5.() -> Unit) {
         HTMLH5().also {
             body(it)
-            addTextable(it)
+            addElement(it)
         }
     }
 
-    fun h6(body: HTMLH6.() -> Unit) {
+    open fun h6(body: HTMLH6.() -> Unit) {
         HTMLH6().also {
             body(it)
-            addTextable(it)
+            addElement(it)
         }
     }
 
@@ -90,28 +91,35 @@ abstract class HTMLTextableContainer : HTMLElement() {
     fun em(body: HTMLEm.() -> Unit) {
         HTMLEm().also {
             body(it)
-            addTextable(it)
+            addElement(it)
         }
     }
 
     fun i(body: HTMLI.() -> Unit) {
         HTMLI().also {
             body(it)
-            addTextable(it)
+            addElement(it)
         }
     }
 
     fun b(body: HTMLB.() -> Unit) {
         HTMLB().also {
             body(it)
-            addTextable(it)
+            addElement(it)
         }
     }
 
     fun br(body: HTMLBr.() -> Unit) {
         HTMLBr().also {
             body(it)
-            addTextable(it)
+            addElement(it)
+        }
+    }
+
+    open fun img(body: HTMLImg.() -> Unit) {
+        HTMLImg().also {
+            body(it)
+            addElement(it)
         }
     }
 }

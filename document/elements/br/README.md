@@ -6,9 +6,11 @@ fun main() {
     html {
         head { }
         body {
+            // In body.
             br()
             p {
                 +"P text"
+                // In p tag.
                 br()
                 +"P text line2"
             }

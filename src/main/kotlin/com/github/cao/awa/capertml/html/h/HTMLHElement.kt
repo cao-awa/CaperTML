@@ -1,18 +1,18 @@
-package org.github.cao.awa.com.github.cao.awa.capertml.html.i
+package org.github.cao.awa.com.github.cao.awa.capertml.html.h
 
 import org.github.cao.awa.com.github.cao.awa.capertml.context.HTMLPhrasingContext
 import org.github.cao.awa.com.github.cao.awa.capertml.html.HTMLElement
 import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLTextable
 
-class HTMLI: HTMLElement(), HTMLTextable, HTMLPhrasingContext {
-    private var text: String = ""
+abstract class HTMLHElement: HTMLElement(), HTMLTextable, HTMLPhrasingContext {
+    private var text: String? = null
+
+    operator fun String.unaryPlus() {
+        this@HTMLHElement.text = this
+    }
 
     override fun text(text: String) {
         this.text = text
-    }
-
-    operator fun String.unaryPlus() {
-        this@HTMLI.text = this
     }
 
     override fun toString(pretty: Boolean, ident: String): String {
@@ -20,16 +20,18 @@ class HTMLI: HTMLElement(), HTMLTextable, HTMLPhrasingContext {
         if (pretty) {
             builder.append(ident)
         }
-        builder.append("<i")
+        builder.append("<${getTagName()}")
         appendGlobal(builder)
         builder.append(">")
-        if (this.text.isNotEmpty()) {
+        if (this.text != null) {
             builder.append(this.text)
         }
-        builder.append("</i>")
+        builder.append("</${getTagName()}>")
         if (pretty) {
             builder.append("\n")
         }
         return builder.toString()
     }
+
+    abstract fun getTagName(): String
 }
