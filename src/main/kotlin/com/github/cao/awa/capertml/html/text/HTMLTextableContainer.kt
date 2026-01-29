@@ -3,6 +3,7 @@ package org.github.cao.awa.com.github.cao.awa.capertml.html.text
 import org.github.cao.awa.com.github.cao.awa.capertml.html.HTMLElement
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.HTMLA
 import org.github.cao.awa.com.github.cao.awa.capertml.html.br.HTMLBr
+import org.github.cao.awa.com.github.cao.awa.capertml.html.em.HTMLEm
 import org.github.cao.awa.com.github.cao.awa.capertml.html.h.HTMLH1
 import org.github.cao.awa.com.github.cao.awa.capertml.html.h.HTMLH2
 import org.github.cao.awa.com.github.cao.awa.capertml.html.h.HTMLH3
@@ -81,6 +82,13 @@ abstract class HTMLTextableContainer : HTMLElement() {
     fun br() {
         br {
 
+        }
+    }
+
+    fun em(body: HTMLEm.() -> Unit) {
+        HTMLEm().also {
+            body(it)
+            addTextable(it)
         }
     }
 

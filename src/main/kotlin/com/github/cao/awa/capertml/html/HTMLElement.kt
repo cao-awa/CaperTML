@@ -1,9 +1,11 @@
 package org.github.cao.awa.com.github.cao.awa.capertml.html
 
+import org.github.cao.awa.com.github.cao.awa.capertml.html.capitalize.HTMLAutoCapitalizeType
 import org.github.cao.awa.com.github.cao.awa.capertml.html.direction.HTMLDirection
 
 abstract class HTMLElement {
-    private var hClass: Array<out String> = arrayOf()
+    private var classes: Array<out String> = arrayOf()
+    private var author: String = ""
     private var id: String = ""
     private var lang: String = ""
     private var dir: HTMLDirection = HTMLDirection.AUTO
@@ -21,6 +23,7 @@ abstract class HTMLElement {
     private var role: String = ""
     private var contextMenu: String = ""
     private var accessKey: String = ""
+    private var autoCapitalize: HTMLAutoCapitalizeType? = null
 
     abstract fun toString(pretty: Boolean, ident: String): String
 
@@ -29,7 +32,11 @@ abstract class HTMLElement {
     }
 
     fun classes(vararg name: String) {
-        this.hClass = name
+        this.classes = name
+    }
+
+    fun author(author: String) {
+        this.author = author
     }
 
     fun id(id: String) {
@@ -96,9 +103,13 @@ abstract class HTMLElement {
         this.accessKey = key
     }
 
+    fun autoCapitalize(type: HTMLAutoCapitalizeType) {
+        this.autoCapitalize = type
+    }
+
     fun getLang(): String = this.lang
 
-    fun getHtmlClass(): Array<out String> = this.hClass
+    fun getHtmlClass(): Array<out String> = this.classes
 
     fun getId(): String = this.id
 
@@ -133,6 +144,9 @@ abstract class HTMLElement {
     fun appendGlobal(builder: StringBuilder) {
         if (this.lang.isNotEmpty()) {
             builder.append(" lang=\"${this.lang}\"")
+        }
+        if (this.author.isNotEmpty()) {
+            builder.append(" author=\"${this.author}\"")
         }
         if (this.titleAttr.isNotEmpty()) {
             builder.append(" title=\"${this.titleAttr}\"")
@@ -172,6 +186,9 @@ abstract class HTMLElement {
         }
         if (this.accessKey.isNotEmpty()) {
             builder.append(" accesskey=\"${this.accessKey}\"")
+        }
+        if (this.autoCapitalize != null) {
+            builder.append(" autapitalize=\"${this.autoCapitalize}\"")
         }
         if (isHidden()) {
             builder.append(" hidden")

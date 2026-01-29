@@ -44,7 +44,9 @@ fun main() {
                             height(DEVICE_HEIGHT)
                         }
                         br()
-                        +"text"
+                        em {
+                            +"notice"
+                        }
                     }
                 }
                 br()
