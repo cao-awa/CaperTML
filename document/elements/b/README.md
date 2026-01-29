@@ -18,3 +18,8 @@ fun main() {
     }
 }
 ```
+
+## Methods
+Tag 'b' has only a ```text``` method used to set text.
+
+And could use plus operator to set the text.

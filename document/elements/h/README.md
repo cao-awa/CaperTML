@@ -20,3 +20,8 @@ fun main() {
     }
 }
 ```
+
+## Methods
+Tag 'h1' ~ 'h6' has only a ```text``` method used to set text.
+
+And could use plus operator to set the text.

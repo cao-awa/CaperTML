@@ -62,6 +62,7 @@ fun main() {
                     // Target.
                     target(HTMLATarget.PARENT)
                     // Ping list.
+                    +"text2"
                     ping {
                         +"https://www.google.com"
                         +"https://github.com"

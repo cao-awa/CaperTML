@@ -1,5 +1,6 @@
 package org.github.cao.awa.com.github.cao.awa.capertml.html.a
 
+import org.github.cao.awa.com.github.cao.awa.capertml.context.HTMLFlowContext
 import org.github.cao.awa.com.github.cao.awa.capertml.context.HTMLPhrasingContext
 import org.github.cao.awa.com.github.cao.awa.capertml.html.HTMLElement
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.HTMLADevice
@@ -11,19 +12,22 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.a.ping.HTMLAPingList
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.ref.HTMLAReferrerPolicy
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.rel.HTMLARelType
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.target.HTMLATarget
+import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLFlowContentContainer
+import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLText
 import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLTextable
+import java.util.LinkedList
 
-class HTMLA: HTMLElement(), HTMLTextable, HTMLPhrasingContext {
+class HTMLA: HTMLFlowContentContainer(), HTMLTextable, HTMLFlowContext {
     private var download: String = ""
     private var href: String = ""
     private var hrefLang: String = ""
     private var referrerPolicy: HTMLAReferrerPolicy? = null
     private var rel: HTMLARelType? = null
-    private var text: String = ""
     private var target: HTMLATarget? = null
     private var media: HTMLAMedia? = null
     private var type: String? = null
     private var ping: HTMLAPingList? = null
+    private var elements: LinkedList<HTMLElement> = LinkedList()
 
     fun download(download: String) {
         if (this.download.isNotEmpty()) {
@@ -69,10 +73,9 @@ class HTMLA: HTMLElement(), HTMLTextable, HTMLPhrasingContext {
     }
 
     private fun setText(text: String) {
-        if (this.text.isNotEmpty()) {
-            error("Text is already set")
-        }
-            this.text = text
+        this.elements.add(HTMLText().also {
+            it.text(text)
+        })
     }
 
     fun target(target: HTMLATarget) {
@@ -156,13 +159,11 @@ class HTMLA: HTMLElement(), HTMLTextable, HTMLPhrasingContext {
 
         if (pretty) {
             builder.append("\n")
-            builder.append("$ident    ")
         }
-        if (this.text.isNotEmpty()) {
-            builder.append(this.text)
+        for (element in this.elements) {
+            builder.append(element.toString(pretty, "$ident    "))
         }
         if (pretty) {
-            builder.append("\n")
             builder.append(ident)
         }
         builder.append("</a>")
@@ -170,5 +171,9 @@ class HTMLA: HTMLElement(), HTMLTextable, HTMLPhrasingContext {
             builder.append("\n")
         }
         return builder.toString()
+    }
+
+    override fun addElement(element: HTMLElement) {
+        this.elements.add(element)
     }
 }
