@@ -1,7 +1,6 @@
-package org.github.cao.awa.com.github.cao.awa.capertml.html.h
+package org.github.cao.awa.com.github.cao.awa.capertml.html.i
 
 import org.github.cao.awa.com.github.cao.awa.capertml.html.HTMLElement
-import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLText
 import org.github.cao.awa.com.github.cao.awa.capertml.html.text.HTMLTextable
 
 class HTMLI: HTMLElement(), HTMLTextable {

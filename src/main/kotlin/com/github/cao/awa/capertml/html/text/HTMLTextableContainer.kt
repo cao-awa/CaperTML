@@ -11,7 +11,7 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.h.HTMLH3
 import org.github.cao.awa.com.github.cao.awa.capertml.html.h.HTMLH4
 import org.github.cao.awa.com.github.cao.awa.capertml.html.h.HTMLH5
 import org.github.cao.awa.com.github.cao.awa.capertml.html.h.HTMLH6
-import org.github.cao.awa.com.github.cao.awa.capertml.html.h.HTMLI
+import org.github.cao.awa.com.github.cao.awa.capertml.html.i.HTMLI
 import org.github.cao.awa.com.github.cao.awa.capertml.html.p.HTMLP
 
 abstract class HTMLTextableContainer : HTMLElement() {
