@@ -133,6 +133,25 @@ You will get these output:
 </html>
 ```
 
+## Compile-Time Enforcement of Content Model Rules
+
+CaperTML enforces HTML content model constraints **at compile time**.
+
+Each element in the DSL is bound to a specific *content domain*, encoded directly into the type system.
+This means that attempting to place an element in an invalid context (for example, inserting block-level elements such as `<div>` or `<h1>` inside a `<p>` element) will result in a **compile-time error**, not a runtime failure.
+
+Invalid HTML structures are therefore **unrepresentable** in CaperTML.
+
+This design intentionally shifts error detection from runtime to compile time, ensuring that only structurally valid HTML can be constructed. The compiler becomes the first line of validation, eliminating an entire class of markup errors before the application can run.
+
+As a result:
+
+* Invalid element nesting is rejected by the compiler
+* Incorrect content-domain usage cannot be expressed
+* Generated HTML is structurally valid by construction
+
+Correctness is enforced by design, not by convention.
+
 ## Philosophy
 
 CaperTML is **not** a general-purpose HTML template engine, nor a string-based HTML assembler.
@@ -231,4 +250,5 @@ By encoding HTML rules into the type system, it shifts error detection from runt
 HTML **unrepresentable**.
 
 Correctness is not an option — it is the default.
+
 
