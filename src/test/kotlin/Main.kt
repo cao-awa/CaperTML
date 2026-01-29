@@ -47,6 +47,9 @@ fun main() {
                         em {
                             +"notice"
                         }
+                        b {
+                            +"Notice 2"
+                        }
                     }
                 }
                 br()
