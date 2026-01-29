@@ -7,6 +7,7 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.value.orienta
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.value.orientation.landscape
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.target.HTMLATarget
 import org.github.cao.awa.com.github.cao.awa.capertml.style.align.HTMLAlignType
+import org.github.cao.awa.com.github.cao.awa.capertml.style.height.DEVICE_HEIGHT
 import org.github.cao.awa.com.github.cao.awa.capertml.style.width.DEVICE_WIDTH
 import java.io.File
 
@@ -39,6 +40,8 @@ fun main() {
                         +"This is a p text"
                         img {
                             src("/awa.png")
+                            width(DEVICE_WIDTH)
+                            height(DEVICE_HEIGHT)
                         }
                         br()
                         +"text"

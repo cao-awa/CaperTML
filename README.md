@@ -14,73 +14,77 @@ It's making invalid HTML content cannot be produce.
 Execute the code:
 
 ```kotlin
-fun main() {
     val html = html {
-        lang("en")
-        head {
-            meta {
-                charset(Charsets.UTF_8)
-            }
-            meta {
-                viewport {
-                    width(DEVICE_WIDTH)
-                    initialScale(1.0)
-                }
-            }
-            meta {
-                colorScheme {
-                    schema(HTMLColorSchemeType.DARK)
-                }
-            }
-
-            pageTitle {
-                +"TestPage"
+    lang("en")
+    head {
+        meta {
+            charset(Charsets.UTF_8)
+        }
+        meta {
+            viewport {
+                width(DEVICE_WIDTH)
+                initialScale(1.0)
             }
         }
-        body {
-            div {
-                title("This is a title")
-                draggable()
-                h1 {
-                    +"Section title"
-                }
+        pageTitle {
+            +"TestPage"
+        }
+    }
+    body {
+        div {
+            draggable()
+            title("This is a title")
+            h1 {
+                +"Section title"
+            }
+            span {
                 p {
                     +"This is a p text"
-                }
-                a {
-                    +"awa"
-                    // Custom tag attr.
-                    custom("my-tag", "awa")
-                    // Href.
-                    href("https://example.org")
-                    // Href lang.
-                    hrefLang("zh")
-                    // Target.
-                    target(HTMLATarget.PARENT)
-                    // Ping list.
-                    ping {
-                        +"https://www.google.com"
-                        +"https://github.com"
+                    img {
+                        src("/awa.png")
+                        width(DEVICE_WIDTH)
+                        height(DEVICE_HEIGHT)
                     }
-                    // Standard media style.
-                    media(
-                        HTMLADevice.ALL,
-                        HTMLAMediaOperator.AND,
-                        orientation(HTMLAMediaOrientations.LANDSCAPE)
-                    )
-                    // Element classes.
-                    classes("type", "test")
+                    br()
+                    +"text"
                 }
-                a {
-                    href("https://www.awa.com")
-                    // Shorter media style.
-                    media(all and landscape)
+            }
+            br()
+            br()
+            a {
+                +"awa"
+                // Custom tag attr.
+                custom("my-tag", "awa")
+                // Href.
+                href("https://example.org")
+                // Href lang.
+                hrefLang("zh")
+                // Target.
+                target(HTMLATarget.PARENT)
+                // Ping list.
+                ping {
+                    +"https://www.google.com"
+                    +"https://github.com"
                 }
+                // Standard media style.
+                media(
+                    HTMLADevice.ALL,
+                    HTMLAMediaOperator.AND,
+                    orientation(HTMLAMediaOrientations.LANDSCAPE)
+                )
+                // Element classes.
+                classes("type", "test")
+            }
+            a {
+                href("https://www.awa.com")
+                // Shorter media style.
+                media(all and landscape)
             }
         }
     }
+}
 
-    println(html.toString(true, ""))
+println(html.toString(true, ""))
 }
 ```
 
@@ -92,14 +96,22 @@ You will get these output:
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <meta name="color-scheme" content="dark">
         <title>TestPage</title>
     </head>
     <body>
         <div title="This is a title" draggable="true">
             <h1>Section title</h1>
-            <p>This is a p text</p>
-            <a href="https://example.org" hreflang="zh" target="_parent" media="all and (orientation:landscape)" ping="https://www.google.com https://github.com" class="type test" my-tag="awa">
+            <span>
+                <p>
+                    This is a p text
+                    <img src="/awa.png" width="device-width" height="device-height">
+                    <br />
+                    text
+                </p>
+            </span>
+            <br />
+            <br />
+            <a href="https://example.org" hreflang="zh" target="_parent" media="all and (orientation:landscape)" ping="https://www.google.com https://github.com" class="type test" data-my-tag="awa">
                 awa
             </a>
             <a href="https://www.awa.com" media="all and (orientation:landscape)">

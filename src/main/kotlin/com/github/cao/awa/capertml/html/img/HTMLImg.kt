@@ -2,6 +2,7 @@ package org.github.cao.awa.com.github.cao.awa.capertml.html.img
 
 import org.github.cao.awa.com.github.cao.awa.capertml.html.HTMLElement
 import org.github.cao.awa.com.github.cao.awa.capertml.style.height.HTMLHeightStyle
+import org.github.cao.awa.com.github.cao.awa.capertml.style.unit.HTMLStyleNumberUnit
 import org.github.cao.awa.com.github.cao.awa.capertml.style.width.HTMLWidthStyle
 
 class HTMLImg: HTMLElement() {
@@ -17,8 +18,16 @@ class HTMLImg: HTMLElement() {
         this.width = style
     }
 
+    fun width(size: Int, unit: HTMLStyleNumberUnit) {
+        this.width = HTMLWidthStyle.of(size, unit)
+    }
+
     fun height(style: HTMLHeightStyle) {
         this.height = style
+    }
+
+    fun height(size: Int, unit: HTMLStyleNumberUnit) {
+        this.height = HTMLHeightStyle.of(size, unit)
     }
 
     override fun toString(pretty: Boolean, ident: String): String {
