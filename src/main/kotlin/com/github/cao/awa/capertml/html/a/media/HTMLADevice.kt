@@ -13,7 +13,7 @@ enum class HTMLADevice(val literal: String) {
     TTY("tty"),
     TV("tv");
 
-    infix fun and(type: HTMLAMediaValue): HTMLAMedia {
+    infix fun and(type: HTMLAMediaValue<*>): HTMLAMedia {
         return HTMLAMedia(
             this,
             HTMLAMediaOperator.AND,
@@ -21,7 +21,7 @@ enum class HTMLADevice(val literal: String) {
         )
     }
 
-    infix fun or(type: HTMLAMediaValue): HTMLAMedia {
+    infix fun or(type: HTMLAMediaValue<*>): HTMLAMedia {
         return HTMLAMedia(
             this,
             HTMLAMediaOperator.OR,
@@ -29,7 +29,7 @@ enum class HTMLADevice(val literal: String) {
         )
     }
 
-    infix fun not(type: HTMLAMediaValue): HTMLAMedia {
+    infix fun not(type: HTMLAMediaValue<*>): HTMLAMedia {
         return HTMLAMedia(
             this,
             HTMLAMediaOperator.NOT,
@@ -38,21 +38,21 @@ enum class HTMLADevice(val literal: String) {
     }
 }
 
-val all: HTMLADevice = HTMLADevice.ALL
+val ALL: HTMLADevice = HTMLADevice.ALL
 
-val aural: HTMLADevice = HTMLADevice.AURAL
+val AURAL: HTMLADevice = HTMLADevice.AURAL
 
-val braille: HTMLADevice = HTMLADevice.BRAILLE
+val BRAILLE: HTMLADevice = HTMLADevice.BRAILLE
 
-val handheld: HTMLADevice = HTMLADevice.HANDHELD
+val HANDHELD: HTMLADevice = HTMLADevice.HANDHELD
 
-val projection: HTMLADevice = HTMLADevice.PROJECTION
+val PROJECTION: HTMLADevice = HTMLADevice.PROJECTION
 
-val print: HTMLADevice = HTMLADevice.PRINT
+val PRINT: HTMLADevice = HTMLADevice.PRINT
 
-val screen: HTMLADevice = HTMLADevice.SCREEN
+val SCREEN: HTMLADevice = HTMLADevice.SCREEN
 
-val tty: HTMLADevice = HTMLADevice.TTY
+val TTY: HTMLADevice = HTMLADevice.TTY
 
-val tv: HTMLADevice = HTMLADevice.TV
+val TV: HTMLADevice = HTMLADevice.TV
 

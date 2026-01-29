@@ -88,7 +88,7 @@ class HTMLA: HTMLElement(), HTMLTextable {
         this.media = media
     }
 
-    fun media(device: HTMLADevice, operator: HTMLAMediaOperator, value: HTMLAMediaValue) {
+    fun media(device: HTMLADevice, operator: HTMLAMediaOperator, value: HTMLAMediaValue<*>) {
         media(HTMLAMedia(device, operator, value))
     }
 

@@ -13,12 +13,12 @@ class HTMLWidthStyle(val number: Int, val unit: HTMLStyleNumberUnit) : HTMLStyle
             return HTMLWidthStyle(number, unit)
         }
 
-        fun px(px: Int): HTMLHeightStyle {
-            return HTMLHeightStyle.Companion.of(px, HTMLStyleNumberUnit.PX)
+        fun px(px: Int): HTMLWidthStyle {
+            return of(px, HTMLStyleNumberUnit.PX)
         }
 
-        fun em(px: Int): HTMLHeightStyle {
-            return HTMLHeightStyle.Companion.of(px, HTMLStyleNumberUnit.EM)
+        fun em(px: Int): HTMLWidthStyle {
+            return of(px, HTMLStyleNumberUnit.EM)
         }
     }
 

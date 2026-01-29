@@ -6,6 +6,8 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.value.HTMLAMe
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.value.HTMLAMediaOrientationValue
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.value.HTMLAMediaWidthValue
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.value.orientation.HTMLAMediaOrientations
+import org.github.cao.awa.com.github.cao.awa.capertml.style.height.HTMLHeightStyle
+import org.github.cao.awa.com.github.cao.awa.capertml.style.width.HTMLWidthStyle
 
 enum class HTMLAMediaValueType(val literal: String) {
     WIDTH("width"),
@@ -21,36 +23,40 @@ enum class HTMLAMediaValueType(val literal: String) {
     RESOLUTION("resolution"),
     SCAN("scan"),
     GRID("gird");
+
+    override fun toString(): String {
+        return this.literal
+    }
 }
 
-fun width(value: String, prefix: String = ""): HTMLAMediaWidthValue {
+fun width(value: Int, prefix: String = ""): HTMLAMediaWidthValue {
     return HTMLAMediaWidthValue(
         HTMLAMediaValueType.WIDTH,
-        value,
+        HTMLWidthStyle.px(value),
         prefix
     )
 }
 
-fun deviceWidth(value: String, prefix: String = ""): HTMLAMediaDeviceWidthValue {
+fun deviceWidth(value: Int, prefix: String = ""): HTMLAMediaDeviceWidthValue {
     return HTMLAMediaDeviceWidthValue(
         HTMLAMediaValueType.DEVICE_WIDTH,
-        value,
+        HTMLWidthStyle.px(value),
         prefix
     )
 }
 
-fun height(value: String, prefix: String = ""): HTMLAMediaHeightValue {
+fun height(value: Int, prefix: String = ""): HTMLAMediaHeightValue {
     return HTMLAMediaHeightValue(
         HTMLAMediaValueType.HEIGHT,
-        value,
+        HTMLHeightStyle.px(value),
         prefix
     )
 }
 
-fun deviceHeight(value: String, prefix: String = ""): HTMLAMediaDeviceHeightValue {
+fun deviceHeight(value: Int, prefix: String = ""): HTMLAMediaDeviceHeightValue {
     return HTMLAMediaDeviceHeightValue(
         HTMLAMediaValueType.DEVICE_HEIGHT,
-        value,
+        HTMLHeightStyle.px(value),
     )
 }
 

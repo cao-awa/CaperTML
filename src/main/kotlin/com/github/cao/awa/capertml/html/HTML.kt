@@ -1,6 +1,7 @@
 package org.github.cao.awa.com.github.cao.awa.capertml.html
 
 import org.github.cao.awa.com.github.cao.awa.capertml.html.body.HTMLBody
+import org.github.cao.awa.com.github.cao.awa.capertml.html.br.HTMLBr
 import org.github.cao.awa.com.github.cao.awa.capertml.html.head.HTMLHead
 
 class HTML : HTMLElement() {

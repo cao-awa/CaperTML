@@ -5,9 +5,13 @@ import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.value.HTMLAMe
 
 enum class HTMLAMediaOrientations(val literal: String) {
     PORTRAIT("portrait"),
-    LANDSCAPE("landscape"),
+    LANDSCAPE("landscape"), ;
+
+    override fun toString(): String {
+        return this.literal
+    }
 }
 
-val portrait: HTMLAMediaValue = orientation(HTMLAMediaOrientations.PORTRAIT)
+val PORTRAIT: HTMLAMediaValue<HTMLAMediaOrientations> = orientation(HTMLAMediaOrientations.PORTRAIT)
 
-val landscape: HTMLAMediaValue = orientation(HTMLAMediaOrientations.LANDSCAPE)
+val LANDSCAPE: HTMLAMediaValue<HTMLAMediaOrientations> = orientation(HTMLAMediaOrientations.LANDSCAPE)

@@ -1,12 +1,11 @@
 import org.github.cao.awa.com.github.cao.awa.capertml.html
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.HTMLADevice
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.HTMLAMediaOperator
-import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.all
+import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.ALL
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.orientation
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.value.orientation.HTMLAMediaOrientations
-import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.value.orientation.landscape
+import org.github.cao.awa.com.github.cao.awa.capertml.html.a.media.value.orientation.LANDSCAPE
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.target.HTMLATarget
-import org.github.cao.awa.com.github.cao.awa.capertml.style.align.HTMLAlignType
 import org.github.cao.awa.com.github.cao.awa.capertml.style.height.DEVICE_HEIGHT
 import org.github.cao.awa.com.github.cao.awa.capertml.style.width.DEVICE_WIDTH
 import java.io.File
@@ -30,16 +29,16 @@ fun main() {
         }
         body {
             div {
-                draggable()
                 title("This is a title")
                 h1 {
                     +"Section title"
                 }
                 span {
+                    +"Span text"
                     p {
                         +"This is a p text"
                         img {
-                            src("/awa.png")
+                            src("awa.png")
                             width(DEVICE_WIDTH)
                             height(DEVICE_HEIGHT)
                         }
@@ -83,7 +82,7 @@ fun main() {
                 a {
                     href("https://www.awa.com")
                     // Shorter media style.
-                    media(all and landscape)
+                    media(ALL and LANDSCAPE)
                 }
             }
         }

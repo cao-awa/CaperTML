@@ -85,25 +85,6 @@ fun main() {
 }
 ```
 
-# Br
-Tag 'br' can put into anywhere if not head scope.
-
-```kotlin
-fun main() {
-    html {
-        head { }
-        body {
-            br()
-            p {
-                +"P text"
-                br()
-                +"P text line2"
-            }
-        }
-    }
-}
-```
-
 # I
 Tag 'i' can put into any textable contains, include '\<p\>', '\<div\>' and other.
 
@@ -139,6 +120,24 @@ fun main() {
             p {
                 em {
                     +"Em text in P"
+                }
+            }
+        }
+    }
+}
+```
+
+# Span
+Tag 'span' can put into any textable contains, include '\<p\>', '\<div\>' and other.
+
+```kotlin
+fun main() {
+    html {
+        head { }
+        body {
+            p {
+                span {
+                    +"Span text"
                 }
             }
         }
