@@ -81,6 +81,10 @@ fun main() {
                     // Shorter media style.
                     media(ALL and LANDSCAPE)
                 }
+
+                abbr("WHO") {
+                    +"what h o"
+                }
             }
         }
     }

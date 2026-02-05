@@ -2,6 +2,7 @@ package org.github.cao.awa.com.github.cao.awa.capertml.html.text
 
 import org.github.cao.awa.com.github.cao.awa.capertml.html.HTMLElement
 import org.github.cao.awa.com.github.cao.awa.capertml.html.a.HTMLA
+import org.github.cao.awa.com.github.cao.awa.capertml.html.abbr.HTMLAbbr
 import org.github.cao.awa.com.github.cao.awa.capertml.html.b.HTMLB
 import org.github.cao.awa.com.github.cao.awa.capertml.html.br.HTMLBr
 import org.github.cao.awa.com.github.cao.awa.capertml.html.em.HTMLEm
@@ -118,6 +119,15 @@ abstract class HTMLFlowContentContainer : HTMLElement() {
 
     open fun img(body: HTMLImg.() -> Unit) {
         HTMLImg().also {
+            body(it)
+            addElement(it)
+        }
+    }
+
+    open fun abbr(text: String, body: HTMLAbbr.() -> Unit) {
+        HTMLAbbr(HTMLText().apply {
+            text(text)
+        }).also {
             body(it)
             addElement(it)
         }

@@ -112,7 +112,7 @@ class HTMLHead: HTMLElement() {
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Invalid scope, use 'pageTitle' instead")
     override fun title(title: String) {
-        error("Cannot set title in <head> tag, use 'pageTitle' instead")
+        error("Cannot set title attr in <head> tag, use 'pageTitle' instead")
     }
 
     override fun toString(pretty: Boolean, ident: String): String {

@@ -1,6 +1,9 @@
 package org.github.cao.awa.com.github.cao.awa.capertml.html.head.meta.equiv.style
 
-@Deprecated(level = DeprecationLevel.WARNING, message = "Not recommented to use")
+@Deprecated(
+    level = DeprecationLevel.WARNING,
+    message = "Not recommented to use"
+)
 class HTMLHeadMetaDefaultStyleEquivValueBuilder {
     private var defaultStyle: String = ""
 
