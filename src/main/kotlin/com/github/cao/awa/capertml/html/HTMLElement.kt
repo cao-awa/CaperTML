@@ -27,6 +27,8 @@ abstract class HTMLElement {
 
     abstract fun toString(pretty: Boolean, ident: String): String
 
+    override fun toString(): String = toString(true, "    ")
+
     fun lang(lang: String) {
         this.lang = lang
     }

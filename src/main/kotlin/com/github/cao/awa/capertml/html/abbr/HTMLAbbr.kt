@@ -26,7 +26,13 @@ class HTMLAbbr(private var text: HTMLText) : HTMLElement(), HTMLTextable, HTMLFl
             builder.append(getTitle())
         }
         builder.append(">")
+        if (pretty) {
+            builder.append("\n")
+        }
         builder.append(this.text.toString(pretty, "$ident    "))
+        if (pretty) {
+            builder.append(ident)
+        }
         builder.append("</abbr>")
         if (pretty) {
             builder.append("\n")

@@ -2,8 +2,8 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '2.2.21'
 }
 
-group = 'org.github.cao.awa'
-version = '1.0-SNAPSHOT'
+group = "$project.group_id"
+version = "$project.version_name"
 
 repositories {
     mavenCentral()
@@ -11,6 +11,8 @@ repositories {
 
 dependencies {
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
+
+    implementation 'org.jetbrains:annotations:26.1.0'
 }
 
 kotlin {

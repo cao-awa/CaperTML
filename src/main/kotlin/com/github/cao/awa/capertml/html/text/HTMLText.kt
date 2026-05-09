@@ -20,4 +20,6 @@ class HTMLText: HTMLElement() {
         }
         return builder.toString()
     }
+
+    override fun toString(): String = this.text
 }

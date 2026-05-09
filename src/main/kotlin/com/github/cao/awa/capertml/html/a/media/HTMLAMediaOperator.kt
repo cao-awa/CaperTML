@@ -9,3 +9,7 @@ enum class HTMLAMediaOperator(val literal: String) {
      return this.literal
     }
 }
+
+val AND: HTMLAMediaOperator = HTMLAMediaOperator.AND
+val NOT: HTMLAMediaOperator = HTMLAMediaOperator.NOT
+val OR: HTMLAMediaOperator = HTMLAMediaOperator.OR

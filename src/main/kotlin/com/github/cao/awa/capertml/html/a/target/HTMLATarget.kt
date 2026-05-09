@@ -6,3 +6,8 @@ enum class HTMLATarget(val literal: String) {
     SELF("_self"),
     TOP("_top");
 }
+
+val BLANK: HTMLATarget = HTMLATarget.BLANK
+val PARENT: HTMLATarget = HTMLATarget.PARENT
+val SELF: HTMLATarget = HTMLATarget.SELF
+val TOP: HTMLATarget = HTMLATarget.TOP
